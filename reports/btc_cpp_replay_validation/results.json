@@ -1,6 +1,6 @@
 {
   "schema": "astra.report.btc-cpp-replay.v1",
-  "generated_at": "2026-09-23T17:55:15.574162+00:00",
+  "generated_at": "2026-09-23T18:17:20.730101+00:00",
   "input": {
     "schema": "astra.replay.input.v1",
     "source": "/home/ldtdev/qt/mmtick/data/history_btc_tick",
@@ -21,9 +21,15 @@
       "baseline",
       "laya"
     ],
+    "cost_scenarios": [
+      "base",
+      "stress"
+    ],
+    "stress_models": [
+      "baseline",
+      "hold"
+    ],
     "feed_latency_ns": 1000000,
-    "taker_fee_ppm": 5000,
-    "market_slippage_ppm": 1000,
     "next_event_execution": true,
     "paper_only": true
   },
@@ -33,6 +39,8 @@
       "model": "hold",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1735689600000000000,
       "end_ns": 1751327999000000000,
       "events": 260640,
@@ -55,11 +63,12 @@
       "profit_factor": "0.000",
       "position_units": 0,
       "split": "development_train",
+      "cost_scenario": "base",
       "period": {
         "start": "2025-01-01T00:00:00+00:00",
         "end": "2025-06-30T23:59:59+00:00"
       },
-      "metrics_sha256": "a2e2852a112a4ae4a3822ee2f69412e4004048685b9c80ad486dcfe0ad5e0988",
+      "metrics_sha256": "69700a5241a344122facecf3a5d2f2f6e6faaf0eb8dc8f87ee30d4dd512db37e",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/development_train-hold.jsonl",
         "sha256": "070b5e7da939ec3101fd135a697f6dcba306acd36228b65ba231181fbaccd3ad",
@@ -76,7 +85,61 @@
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+      ]
+    },
+    {
+      "schema": "astra.replay.metrics.v1",
+      "model": "hold",
+      "input": "data/replay/btc-2025-2026.csv",
+      "decision_every": 1000,
+      "taker_fee_ppm": 1000,
+      "market_slippage_ppm": 500,
+      "start_ns": 1735689600000000000,
+      "end_ns": 1751327999000000000,
+      "events": 260640,
+      "decisions": 260,
+      "signals": 0,
+      "accepted_orders": 0,
+      "rejected_orders": 0,
+      "fills": 0,
+      "ignored_events": 0,
+      "initial_equity_units": 10000000,
+      "final_equity_units": 10000000,
+      "pnl_units": 0,
+      "return_ppm": 0,
+      "max_drawdown_units": 0,
+      "realized_pnl_units": 0,
+      "unrealized_pnl_units": 0,
+      "fees_units": 0,
+      "gross_profit_units": 0,
+      "gross_loss_units": 0,
+      "profit_factor": "0.000",
+      "position_units": 0,
+      "split": "development_train",
+      "cost_scenario": "stress",
+      "period": {
+        "start": "2025-01-01T00:00:00+00:00",
+        "end": "2025-06-30T23:59:59+00:00"
+      },
+      "metrics_sha256": "cce4bb67b8e421568e9fd950e745f2c8e91e59652cf276d742833d76aecc89ec",
+      "decision_tape": {
+        "path": "reports/btc_cpp_replay_validation/raw/development_train-hold-stress.jsonl",
+        "sha256": "070b5e7da939ec3101fd135a697f6dcba306acd36228b65ba231181fbaccd3ad",
+        "decisions": 260,
+        "errors": 0,
+        "proposed_actions": {
+          "hold": 260
+        },
+        "gated_holds": 0,
+        "latency_ms": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        }
+      },
+      "stdout_tail": [
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":1000,\"market_slippage_ppm\":500,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
       ]
     },
     {
@@ -84,6 +147,8 @@
       "model": "baseline",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1735689600000000000,
       "end_ns": 1751327999000000000,
       "events": 260640,
@@ -106,11 +171,12 @@
       "profit_factor": "0.907",
       "position_units": 100,
       "split": "development_train",
+      "cost_scenario": "base",
       "period": {
         "start": "2025-01-01T00:00:00+00:00",
         "end": "2025-06-30T23:59:59+00:00"
       },
-      "metrics_sha256": "4c1f39057737933da83da486a21597f0b5ca85854dbe5a93a3f82cb421b0ed38",
+      "metrics_sha256": "45d35923cc60dda46f2edf12e9ae5027716f2b3f78fb2b5339994e89963aef7d",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/development_train-baseline.jsonl",
         "sha256": "c5f21f0cefd1329b6826da357915b4a2c241783c2143eb91f27cf5e6fd159798",
@@ -129,7 +195,63 @@
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":120,\"accepted_orders\":120,\"rejected_orders\":0,\"fills\":120,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":9779717,\"pnl_units\":-220283,\"return_ppm\":-22028,\"max_drawdown_units\":447331,\"realized_pnl_units\":-98918,\"unrealized_pnl_units\":-6142,\"fees_units\":115223,\"gross_profit_units\":968746,\"gross_loss_units\":1067664,\"profit_factor\":\"0.907\",\"position_units\":100}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":120,\"accepted_orders\":120,\"rejected_orders\":0,\"fills\":120,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":9779717,\"pnl_units\":-220283,\"return_ppm\":-22028,\"max_drawdown_units\":447331,\"realized_pnl_units\":-98918,\"unrealized_pnl_units\":-6142,\"fees_units\":115223,\"gross_profit_units\":968746,\"gross_loss_units\":1067664,\"profit_factor\":\"0.907\",\"position_units\":100}"
+      ]
+    },
+    {
+      "schema": "astra.replay.metrics.v1",
+      "model": "baseline",
+      "input": "data/replay/btc-2025-2026.csv",
+      "decision_every": 1000,
+      "taker_fee_ppm": 1000,
+      "market_slippage_ppm": 500,
+      "start_ns": 1735689600000000000,
+      "end_ns": 1751327999000000000,
+      "events": 260640,
+      "decisions": 260,
+      "signals": 120,
+      "accepted_orders": 120,
+      "rejected_orders": 0,
+      "fills": 120,
+      "ignored_events": 0,
+      "initial_equity_units": 10000000,
+      "final_equity_units": 9572437,
+      "pnl_units": -427563,
+      "return_ppm": -42756,
+      "max_drawdown_units": 575285,
+      "realized_pnl_units": -190604,
+      "unrealized_pnl_units": -6573,
+      "fees_units": 230386,
+      "gross_profit_units": 925784,
+      "gross_loss_units": 1116388,
+      "profit_factor": "0.829",
+      "position_units": 100,
+      "split": "development_train",
+      "cost_scenario": "stress",
+      "period": {
+        "start": "2025-01-01T00:00:00+00:00",
+        "end": "2025-06-30T23:59:59+00:00"
+      },
+      "metrics_sha256": "099ce7852c7224b041dd8062a64dfe8e01a2228013ebe3683b3a49e3ac86c902",
+      "decision_tape": {
+        "path": "reports/btc_cpp_replay_validation/raw/development_train-baseline-stress.jsonl",
+        "sha256": "34dc66598d863b11802b8dd5ea3aa8aa97ac9b6d23f1e394d8766936d5be491e",
+        "decisions": 260,
+        "errors": 0,
+        "proposed_actions": {
+          "hold": 26,
+          "short": 119,
+          "long": 115
+        },
+        "gated_holds": 0,
+        "latency_ms": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        }
+      },
+      "stdout_tail": [
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":1000,\"market_slippage_ppm\":500,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":120,\"accepted_orders\":120,\"rejected_orders\":0,\"fills\":120,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":9572437,\"pnl_units\":-427563,\"return_ppm\":-42756,\"max_drawdown_units\":575285,\"realized_pnl_units\":-190604,\"unrealized_pnl_units\":-6573,\"fees_units\":230386,\"gross_profit_units\":925784,\"gross_loss_units\":1116388,\"profit_factor\":\"0.829\",\"position_units\":100}"
       ]
     },
     {
@@ -137,6 +259,8 @@
       "model": "laya",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1735689600000000000,
       "end_ns": 1751327999000000000,
       "events": 260640,
@@ -159,14 +283,15 @@
       "profit_factor": "0.000",
       "position_units": 0,
       "split": "development_train",
+      "cost_scenario": "base",
       "period": {
         "start": "2025-01-01T00:00:00+00:00",
         "end": "2025-06-30T23:59:59+00:00"
       },
-      "metrics_sha256": "c1e7532f2677dc2b9ee02681841499bae72ceee9d1effc4d08868fb893dd3b9f",
+      "metrics_sha256": "19c590e6ab23843358a91691489e3d8efe60cce0938346ec34df982c4286b707",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/development_train-laya.jsonl",
-        "sha256": "1524f0cb032933bf25ab9edbeed91bca38199cf59bb60ccc47e9c2ae4fbbe391",
+        "sha256": "11c1e53bf34b4fb3d58914c531ca42de29f7fec77ba24ca09865bfc65450fd16",
         "decisions": 260,
         "errors": 0,
         "proposed_actions": {
@@ -174,13 +299,13 @@
         },
         "gated_holds": 260,
         "latency_ms": {
-          "mean": 331.983,
-          "p50": 345.718,
-          "p95": 354.545
+          "mean": 285.205,
+          "p50": 285.191,
+          "p95": 293.216
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"laya\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"laya\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1735689600000000000,\"end_ns\":1751327999000000000,\"events\":260640,\"decisions\":260,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
       ]
     },
     {
@@ -188,6 +313,8 @@
       "model": "hold",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1751328000000000000,
       "end_ns": 1767225599000000000,
       "events": 264941,
@@ -210,11 +337,12 @@
       "profit_factor": "0.000",
       "position_units": 0,
       "split": "development_validation",
+      "cost_scenario": "base",
       "period": {
         "start": "2025-07-01T00:00:00+00:00",
         "end": "2025-12-31T23:59:59+00:00"
       },
-      "metrics_sha256": "124144b0d92d1593f150dfad78183d84a81267f4f4a2d9fea058415029fd1509",
+      "metrics_sha256": "5cca360af1b8e81178a1b3a04d23ebc25835a07b8ea77b76b384a2202dcde1c8",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/development_validation-hold.jsonl",
         "sha256": "67360436b48cc152045a542b59fc92d60cd81e8320f015635e026174e7ee5afa",
@@ -231,7 +359,61 @@
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+      ]
+    },
+    {
+      "schema": "astra.replay.metrics.v1",
+      "model": "hold",
+      "input": "data/replay/btc-2025-2026.csv",
+      "decision_every": 1000,
+      "taker_fee_ppm": 1000,
+      "market_slippage_ppm": 500,
+      "start_ns": 1751328000000000000,
+      "end_ns": 1767225599000000000,
+      "events": 264941,
+      "decisions": 265,
+      "signals": 0,
+      "accepted_orders": 0,
+      "rejected_orders": 0,
+      "fills": 0,
+      "ignored_events": 0,
+      "initial_equity_units": 10000000,
+      "final_equity_units": 10000000,
+      "pnl_units": 0,
+      "return_ppm": 0,
+      "max_drawdown_units": 0,
+      "realized_pnl_units": 0,
+      "unrealized_pnl_units": 0,
+      "fees_units": 0,
+      "gross_profit_units": 0,
+      "gross_loss_units": 0,
+      "profit_factor": "0.000",
+      "position_units": 0,
+      "split": "development_validation",
+      "cost_scenario": "stress",
+      "period": {
+        "start": "2025-07-01T00:00:00+00:00",
+        "end": "2025-12-31T23:59:59+00:00"
+      },
+      "metrics_sha256": "fec7861aa46eeb23a79040ec4277912a717998a22d7e03936ca5dc8be3c66fad",
+      "decision_tape": {
+        "path": "reports/btc_cpp_replay_validation/raw/development_validation-hold-stress.jsonl",
+        "sha256": "67360436b48cc152045a542b59fc92d60cd81e8320f015635e026174e7ee5afa",
+        "decisions": 265,
+        "errors": 0,
+        "proposed_actions": {
+          "hold": 265
+        },
+        "gated_holds": 0,
+        "latency_ms": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        }
+      },
+      "stdout_tail": [
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":1000,\"market_slippage_ppm\":500,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
       ]
     },
     {
@@ -239,6 +421,8 @@
       "model": "baseline",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1751328000000000000,
       "end_ns": 1767225599000000000,
       "events": 264941,
@@ -261,11 +445,12 @@
       "profit_factor": "1.177",
       "position_units": 100,
       "split": "development_validation",
+      "cost_scenario": "base",
       "period": {
         "start": "2025-07-01T00:00:00+00:00",
         "end": "2025-12-31T23:59:59+00:00"
       },
-      "metrics_sha256": "b3321585c22cd284f764dcde4c0d9cb03e9bbba598b017eb2dbadacc1a5c6962",
+      "metrics_sha256": "0dbb1130c4d8b632a54211e7d571b0057990b2c189095610e14f2e7c098fec04",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/development_validation-baseline.jsonl",
         "sha256": "25337850f21246ea158ca2273ecb26657c8bbfb4e6f0e68b0aad94f4edaf8ef6",
@@ -284,7 +469,63 @@
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":116,\"accepted_orders\":116,\"rejected_orders\":0,\"fills\":116,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10038227,\"pnl_units\":38227,\"return_ppm\":3822,\"max_drawdown_units\":254715,\"realized_pnl_units\":174992,\"unrealized_pnl_units\":-14057,\"fees_units\":122708,\"gross_profit_units\":1163473,\"gross_loss_units\":988481,\"profit_factor\":\"1.177\",\"position_units\":100}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":116,\"accepted_orders\":116,\"rejected_orders\":0,\"fills\":116,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10038227,\"pnl_units\":38227,\"return_ppm\":3822,\"max_drawdown_units\":254715,\"realized_pnl_units\":174992,\"unrealized_pnl_units\":-14057,\"fees_units\":122708,\"gross_profit_units\":1163473,\"gross_loss_units\":988481,\"profit_factor\":\"1.177\",\"position_units\":100}"
+      ]
+    },
+    {
+      "schema": "astra.replay.metrics.v1",
+      "model": "baseline",
+      "input": "data/replay/btc-2025-2026.csv",
+      "decision_every": 1000,
+      "taker_fee_ppm": 1000,
+      "market_slippage_ppm": 500,
+      "start_ns": 1751328000000000000,
+      "end_ns": 1767225599000000000,
+      "events": 264941,
+      "decisions": 265,
+      "signals": 116,
+      "accepted_orders": 116,
+      "rejected_orders": 0,
+      "fills": 116,
+      "ignored_events": 0,
+      "initial_equity_units": 10000000,
+      "final_equity_units": 9817460,
+      "pnl_units": -182540,
+      "return_ppm": -18254,
+      "max_drawdown_units": 365683,
+      "realized_pnl_units": 77231,
+      "unrealized_pnl_units": -14413,
+      "fees_units": 245358,
+      "gross_profit_units": 1115355,
+      "gross_loss_units": 1038124,
+      "profit_factor": "1.074",
+      "position_units": 100,
+      "split": "development_validation",
+      "cost_scenario": "stress",
+      "period": {
+        "start": "2025-07-01T00:00:00+00:00",
+        "end": "2025-12-31T23:59:59+00:00"
+      },
+      "metrics_sha256": "653812404d49ecabbcb8b81684abed81bbe7507e961984470698c40aae25683b",
+      "decision_tape": {
+        "path": "reports/btc_cpp_replay_validation/raw/development_validation-baseline-stress.jsonl",
+        "sha256": "e555953243d2b1995b5dd2da2f3a59c338f736cf33b2c9a3452f0f19405b4fd5",
+        "decisions": 265,
+        "errors": 0,
+        "proposed_actions": {
+          "short": 125,
+          "hold": 25,
+          "long": 115
+        },
+        "gated_holds": 0,
+        "latency_ms": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        }
+      },
+      "stdout_tail": [
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":1000,\"market_slippage_ppm\":500,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":116,\"accepted_orders\":116,\"rejected_orders\":0,\"fills\":116,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":9817460,\"pnl_units\":-182540,\"return_ppm\":-18254,\"max_drawdown_units\":365683,\"realized_pnl_units\":77231,\"unrealized_pnl_units\":-14413,\"fees_units\":245358,\"gross_profit_units\":1115355,\"gross_loss_units\":1038124,\"profit_factor\":\"1.074\",\"position_units\":100}"
       ]
     },
     {
@@ -292,6 +533,8 @@
       "model": "laya",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1751328000000000000,
       "end_ns": 1767225599000000000,
       "events": 264941,
@@ -314,14 +557,15 @@
       "profit_factor": "0.000",
       "position_units": 0,
       "split": "development_validation",
+      "cost_scenario": "base",
       "period": {
         "start": "2025-07-01T00:00:00+00:00",
         "end": "2025-12-31T23:59:59+00:00"
       },
-      "metrics_sha256": "75449e352d6dfea55870bdf3bb28a3c65e9708ad5aa23b545cfa8c988f105653",
+      "metrics_sha256": "bd5a740d74a6f7103a47b10b96f2af49ac8c8fc3672f283d7586482071a2732a",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/development_validation-laya.jsonl",
-        "sha256": "44bf1742bebc434d8608865c659fd4cf60ba3078e5898ae1c39d6249d043050e",
+        "sha256": "f89e8370e92bd74e944ce16274d4c00b413d00215b8eebd34717f6aaf8634004",
         "decisions": 265,
         "errors": 0,
         "proposed_actions": {
@@ -329,13 +573,13 @@
         },
         "gated_holds": 265,
         "latency_ms": {
-          "mean": 345.475,
-          "p50": 347.332,
-          "p95": 357.602
+          "mean": 285.265,
+          "p50": 282.928,
+          "p95": 309.198
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"laya\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"laya\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1751328000000000000,\"end_ns\":1767225599000000000,\"events\":264941,\"decisions\":265,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
       ]
     },
     {
@@ -343,6 +587,8 @@
       "model": "hold",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1767225600000000000,
       "end_ns": 1788220799000000000,
       "events": 349920,
@@ -365,11 +611,12 @@
       "profit_factor": "0.000",
       "position_units": 0,
       "split": "holdout_2026",
+      "cost_scenario": "base",
       "period": {
         "start": "2026-01-01T00:00:00+00:00",
         "end": "2026-08-31T23:59:59+00:00"
       },
-      "metrics_sha256": "d32b1f98291b120e939ede55beaf3cb30b311eb9c0d6cf664fe49031bd987104",
+      "metrics_sha256": "04860796e59f24c1dda8284551076e0d5602c2acadccf7f70fe5f925aaff1597",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/holdout_2026-hold.jsonl",
         "sha256": "086104ce30d767909ff5d9c6f54e9fb50d6631656c3ba98dc3c7d1dabf2944bc",
@@ -386,7 +633,61 @@
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+      ]
+    },
+    {
+      "schema": "astra.replay.metrics.v1",
+      "model": "hold",
+      "input": "data/replay/btc-2025-2026.csv",
+      "decision_every": 1000,
+      "taker_fee_ppm": 1000,
+      "market_slippage_ppm": 500,
+      "start_ns": 1767225600000000000,
+      "end_ns": 1788220799000000000,
+      "events": 349920,
+      "decisions": 350,
+      "signals": 0,
+      "accepted_orders": 0,
+      "rejected_orders": 0,
+      "fills": 0,
+      "ignored_events": 0,
+      "initial_equity_units": 10000000,
+      "final_equity_units": 10000000,
+      "pnl_units": 0,
+      "return_ppm": 0,
+      "max_drawdown_units": 0,
+      "realized_pnl_units": 0,
+      "unrealized_pnl_units": 0,
+      "fees_units": 0,
+      "gross_profit_units": 0,
+      "gross_loss_units": 0,
+      "profit_factor": "0.000",
+      "position_units": 0,
+      "split": "holdout_2026",
+      "cost_scenario": "stress",
+      "period": {
+        "start": "2026-01-01T00:00:00+00:00",
+        "end": "2026-08-31T23:59:59+00:00"
+      },
+      "metrics_sha256": "bd4eadb26c1d6e4dd360026af04feb43dcf50854a7b8741c270a4d66fed80e76",
+      "decision_tape": {
+        "path": "reports/btc_cpp_replay_validation/raw/holdout_2026-hold-stress.jsonl",
+        "sha256": "086104ce30d767909ff5d9c6f54e9fb50d6631656c3ba98dc3c7d1dabf2944bc",
+        "decisions": 350,
+        "errors": 0,
+        "proposed_actions": {
+          "hold": 350
+        },
+        "gated_holds": 0,
+        "latency_ms": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        }
+      },
+      "stdout_tail": [
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"hold\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":1000,\"market_slippage_ppm\":500,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
       ]
     },
     {
@@ -394,6 +695,8 @@
       "model": "baseline",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1767225600000000000,
       "end_ns": 1788220799000000000,
       "events": 349920,
@@ -416,11 +719,12 @@
       "profit_factor": "0.759",
       "position_units": -100,
       "split": "holdout_2026",
+      "cost_scenario": "base",
       "period": {
         "start": "2026-01-01T00:00:00+00:00",
         "end": "2026-08-31T23:59:59+00:00"
       },
-      "metrics_sha256": "47e6960f3eaddccd2d11a0c8275e375ea758209a902ec04d066555b5f46e4f53",
+      "metrics_sha256": "8b02409b0f8df09afe483ff77d73ac197a57d354ab025c75cd171c6bf119f726",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/holdout_2026-baseline.jsonl",
         "sha256": "737ed5f531c9f1614c5ba2e94551a7d304bf0e9325067ccad81006f114688dbb",
@@ -439,7 +743,63 @@
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":143,\"accepted_orders\":143,\"rejected_orders\":0,\"fills\":143,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":9602503,\"pnl_units\":-397497,\"return_ppm\":-39749,\"max_drawdown_units\":425295,\"realized_pnl_units\":-293067,\"unrealized_pnl_units\":-1683,\"fees_units\":102747,\"gross_profit_units\":923235,\"gross_loss_units\":1216302,\"profit_factor\":\"0.759\",\"position_units\":-100}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":143,\"accepted_orders\":143,\"rejected_orders\":0,\"fills\":143,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":9602503,\"pnl_units\":-397497,\"return_ppm\":-39749,\"max_drawdown_units\":425295,\"realized_pnl_units\":-293067,\"unrealized_pnl_units\":-1683,\"fees_units\":102747,\"gross_profit_units\":923235,\"gross_loss_units\":1216302,\"profit_factor\":\"0.759\",\"position_units\":-100}"
+      ]
+    },
+    {
+      "schema": "astra.replay.metrics.v1",
+      "model": "baseline",
+      "input": "data/replay/btc-2025-2026.csv",
+      "decision_every": 1000,
+      "taker_fee_ppm": 1000,
+      "market_slippage_ppm": 500,
+      "start_ns": 1767225600000000000,
+      "end_ns": 1788220799000000000,
+      "events": 349920,
+      "decisions": 350,
+      "signals": 143,
+      "accepted_orders": 143,
+      "rejected_orders": 0,
+      "fills": 143,
+      "ignored_events": 0,
+      "initial_equity_units": 10000000,
+      "final_equity_units": 9417685,
+      "pnl_units": -582315,
+      "return_ppm": -58231,
+      "max_drawdown_units": 600242,
+      "realized_pnl_units": -374900,
+      "unrealized_pnl_units": -1996,
+      "fees_units": 205419,
+      "gross_profit_units": 890680,
+      "gross_loss_units": 1265580,
+      "profit_factor": "0.703",
+      "position_units": -100,
+      "split": "holdout_2026",
+      "cost_scenario": "stress",
+      "period": {
+        "start": "2026-01-01T00:00:00+00:00",
+        "end": "2026-08-31T23:59:59+00:00"
+      },
+      "metrics_sha256": "c5ba7c173fec2ea54d76954e93f6640d5e98e4f197e06d03c389a2be6f0130be",
+      "decision_tape": {
+        "path": "reports/btc_cpp_replay_validation/raw/holdout_2026-baseline-stress.jsonl",
+        "sha256": "82ea9b9d4eaeec467de49987f5c3e715dfd04b47e542e0c20f9dfa2c350c0968",
+        "decisions": 350,
+        "errors": 0,
+        "proposed_actions": {
+          "short": 170,
+          "long": 146,
+          "hold": 34
+        },
+        "gated_holds": 0,
+        "latency_ms": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0
+        }
+      },
+      "stdout_tail": [
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"baseline\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":1000,\"market_slippage_ppm\":500,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":143,\"accepted_orders\":143,\"rejected_orders\":0,\"fills\":143,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":9417685,\"pnl_units\":-582315,\"return_ppm\":-58231,\"max_drawdown_units\":600242,\"realized_pnl_units\":-374900,\"unrealized_pnl_units\":-1996,\"fees_units\":205419,\"gross_profit_units\":890680,\"gross_loss_units\":1265580,\"profit_factor\":\"0.703\",\"position_units\":-100}"
       ]
     },
     {
@@ -447,6 +807,8 @@
       "model": "laya",
       "input": "data/replay/btc-2025-2026.csv",
       "decision_every": 1000,
+      "taker_fee_ppm": 500,
+      "market_slippage_ppm": 100,
       "start_ns": 1767225600000000000,
       "end_ns": 1788220799000000000,
       "events": 349920,
@@ -469,14 +831,15 @@
       "profit_factor": "0.000",
       "position_units": 0,
       "split": "holdout_2026",
+      "cost_scenario": "base",
       "period": {
         "start": "2026-01-01T00:00:00+00:00",
         "end": "2026-08-31T23:59:59+00:00"
       },
-      "metrics_sha256": "f04f4ffccacb4f470084e2cb0bcdfc4e1a96fa49b1a2ea361040eb3f6fa8ce77",
+      "metrics_sha256": "51e2291a191da938922fd7f49edb9bac2a53b0d791f3bc74631e5dbbcaa9b08f",
       "decision_tape": {
         "path": "reports/btc_cpp_replay_validation/raw/holdout_2026-laya.jsonl",
-        "sha256": "b11e95a1c911fcf3cbb38d9913d643765023408499dccc62c01c2ccdeda6bb9c",
+        "sha256": "8e11c518fecd06c9056de598cd14225667e0724fd2c3d8ad7c8ce4a05a9e48a7",
         "decisions": 350,
         "errors": 0,
         "proposed_actions": {
@@ -484,13 +847,13 @@
         },
         "gated_holds": 350,
         "latency_ms": {
-          "mean": 303.025,
-          "p50": 289.182,
-          "p95": 346.594
+          "mean": 294.872,
+          "p50": 284.281,
+          "p95": 340.485
         }
       },
       "stdout_tail": [
-        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"laya\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
+        "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"laya\",\"input\":\"data/replay/btc-2025-2026.csv\",\"decision_every\":1000,\"taker_fee_ppm\":500,\"market_slippage_ppm\":100,\"start_ns\":1767225600000000000,\"end_ns\":1788220799000000000,\"events\":349920,\"decisions\":350,\"signals\":0,\"accepted_orders\":0,\"rejected_orders\":0,\"fills\":0,\"ignored_events\":0,\"initial_equity_units\":10000000,\"final_equity_units\":10000000,\"pnl_units\":0,\"return_ppm\":0,\"max_drawdown_units\":0,\"realized_pnl_units\":0,\"unrealized_pnl_units\":0,\"fees_units\":0,\"gross_profit_units\":0,\"gross_loss_units\":0,\"profit_factor\":\"0.000\",\"position_units\":0}"
       ]
     }
   ],

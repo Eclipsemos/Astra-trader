@@ -21,6 +21,10 @@ SPLITS = {
     "development_validation": ("2025-07-01T00:00:00+00:00", "2025-12-31T23:59:59+00:00"),
     "holdout_2026": ("2026-01-01T00:00:00+00:00", "2026-08-31T23:59:59+00:00"),
 }
+COSTS = {
+    "base": (500, 100),
+    "stress": (1_000, 500),
+}
 
 
 def ns(value: str) -> int:
@@ -41,13 +45,15 @@ def run_one(
     output_dir: Path,
     split: str,
     model: str,
+    cost_scenario: str,
     decision_every: int,
     include_detail: bool,
 ) -> dict[str, Any]:
     raw_dir = output_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
-    metrics_path = raw_dir / f"{split}-{model}.json"
-    detail_path = raw_dir / f"{split}-{model}.jsonl"
+    suffix = "" if cost_scenario == "base" else f"-{cost_scenario}"
+    metrics_path = raw_dir / f"{split}-{model}{suffix}.json"
+    detail_path = raw_dir / f"{split}-{model}{suffix}.jsonl"
     start, end = SPLITS[split]
     command = [
         str(binary),
@@ -63,12 +69,17 @@ def run_one(
         str(ns(start)),
         "--end-ns",
         str(ns(end)),
+        "--taker-fee-ppm",
+        str(COSTS[cost_scenario][0]),
+        "--market-slippage-ppm",
+        str(COSTS[cost_scenario][1]),
     ]
     if include_detail:
         command.extend(("--detail", str(detail_path)))
     completed = subprocess.run(command, check=True, capture_output=True, text=True)
     result = json.loads(metrics_path.read_text(encoding="utf-8"))
     result["split"] = split
+    result["cost_scenario"] = cost_scenario
     result["period"] = {"start": start, "end": end}
     result["metrics_sha256"] = sha256(metrics_path)
     if include_detail and detail_path.exists():
@@ -111,13 +122,14 @@ def run_one(
 
 def markdown(report: dict[str, Any]) -> str:
     rows = [
-        "| Split | Model | Return | PF | Max DD | Fills | Orders | Fees |",
-        "|---|---|---:|---:|---:|---:|---:|---:|",
+        "| Split | Model | Cost | Return | PF | Max DD | Fills | Orders | Fees |",
+        "|---|---|---|---:|---:|---:|---:|---:|---:|",
     ]
     for result in report["runs"]:
         return_pct = int(result["return_ppm"]) / 10_000
         rows.append(
-            f"| {result['split']} | {result['model']} | {return_pct:.4f}% | "
+            f"| {result['split']} | {result['model']} | {result['cost_scenario']} | "
+            f"{return_pct:.4f}% | "
             f"{result['profit_factor']} | {result['max_drawdown_units']} | "
             f"{result['fills']} | {result['accepted_orders']} | {result['fees_units']} |"
         )
@@ -152,7 +164,7 @@ def markdown(report: dict[str, Any]) -> str:
         "- Development validation: 2025-07-01 through 2025-12-31.",
         "- Untouched holdout: 2026-01-01 through 2026-08-31, matching the available cache cutoff.",
         "- Decision cadence: every 1,000 normalized events; an order is submitted on the next event.",
-        "- Simulated execution: taker fee 5 bps, market slippage 1 bp, one-minute synthetic spread.",
+        "- Cost scenarios: base 5 bps fee + 1 bp slippage; stress 10 bps fee + 5 bps slippage.",
         "- Initial cash: 100,000 USDT-equivalent account units; target position: +/-0.1 BTC.",
         "",
         "## Decision",
@@ -182,6 +194,8 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("reports/btc_cpp_replay_validation"))
     parser.add_argument("--decision-every", type=int, default=1_000)
     parser.add_argument("--models", default="hold,baseline,laya")
+    parser.add_argument("--cost-scenarios", default="base,stress")
+    parser.add_argument("--stress-models", default="hold,baseline")
     parser.add_argument("--skip-details", action="store_true")
     args = parser.parse_args()
     if not args.binary.exists():
@@ -193,24 +207,33 @@ def main() -> None:
         raise SystemExit(f"replay input manifest does not exist: {manifest_path}")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     models = [model.strip() for model in args.models.split(",") if model.strip()]
+    cost_scenarios = [scenario.strip() for scenario in args.cost_scenarios.split(",") if scenario.strip()]
+    stress_models = {model.strip() for model in args.stress_models.split(",") if model.strip()}
+    unknown_costs = set(cost_scenarios) - set(COSTS)
+    if unknown_costs:
+        raise SystemExit(f"unknown cost scenarios: {sorted(unknown_costs)}")
     unknown = set(models) - {"hold", "baseline", "laya"}
     if unknown:
         raise SystemExit(f"unknown models: {sorted(unknown)}")
     runs = []
     for split in SPLITS:
         for model in models:
-            print(f"running {split}/{model}", flush=True)
-            runs.append(
-                run_one(
-                    args.binary,
-                    args.input,
-                    args.output_dir,
-                    split,
-                    model,
-                    args.decision_every,
-                    not args.skip_details,
+            for cost_scenario in cost_scenarios:
+                if cost_scenario == "stress" and model not in stress_models:
+                    continue
+                print(f"running {split}/{model}/{cost_scenario}", flush=True)
+                runs.append(
+                    run_one(
+                        args.binary,
+                        args.input,
+                        args.output_dir,
+                        split,
+                        model,
+                        cost_scenario,
+                        args.decision_every,
+                        not args.skip_details,
+                    )
                 )
-            )
     report = {
         "schema": "astra.report.btc-cpp-replay.v1",
         "generated_at": datetime.now(UTC).isoformat(),
@@ -218,9 +241,9 @@ def main() -> None:
         "protocol": {
             "decision_every": args.decision_every,
             "models": models,
+            "cost_scenarios": cost_scenarios,
+            "stress_models": sorted(stress_models),
             "feed_latency_ns": 1_000_000,
-            "taker_fee_ppm": 5_000,
-            "market_slippage_ppm": 1_000,
             "next_event_execution": True,
             "paper_only": True,
         },

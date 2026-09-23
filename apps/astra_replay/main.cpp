@@ -35,6 +35,8 @@ struct Options {
     std::int64_t end_ns{std::numeric_limits<std::int64_t>::max()};
     std::int64_t feed_latency_ns{1'000'000};
     std::uint32_t probability_threshold_ppm{550'000};
+    std::uint32_t taker_fee_ppm{500};
+    std::uint32_t market_slippage_ppm{100};
     std::int64_t laya_timeout_ms{250};
 };
 
@@ -71,6 +73,7 @@ void usage() {
                  "[--detail FILE] [--model baseline|hold|laya] "
                  "[--decision-every N] [--start-ns N] [--end-ns N] "
                  "[--feed-latency-ns N] [--probability-threshold-ppm N] "
+                 "[--taker-fee-ppm N] [--market-slippage-ppm N] "
                  "[--laya-host HOST] [--laya-port PORT] [--laya-timeout-ms N]\n";
 }
 
@@ -112,6 +115,10 @@ bool parse_options(int argc, char** argv, Options& options) {
                  parse_integer(value, options.feed_latency_ns)) {}
         else if (option_value(index, argc, argv, "--probability-threshold-ppm", value) &&
                  parse_integer(value, options.probability_threshold_ppm)) {}
+        else if (option_value(index, argc, argv, "--taker-fee-ppm", value) &&
+                 parse_integer(value, options.taker_fee_ppm)) {}
+        else if (option_value(index, argc, argv, "--market-slippage-ppm", value) &&
+                 parse_integer(value, options.market_slippage_ppm)) {}
         else if (option_value(index, argc, argv, "--laya-timeout-ms", value) &&
                  parse_integer(value, options.laya_timeout_ms)) {}
         else {
@@ -120,7 +127,8 @@ bool parse_options(int argc, char** argv, Options& options) {
     }
     return !options.input.empty() && !options.output.empty() && options.decision_every > 0 &&
            (options.model == "baseline" || options.model == "hold" || options.model == "laya") &&
-           options.feed_latency_ns >= 0 && options.laya_timeout_ms > 0;
+           options.feed_latency_ns >= 0 && options.laya_timeout_ms > 0 &&
+           options.taker_fee_ppm <= 1'000'000 && options.market_slippage_ppm <= 1'000'000;
 }
 
 bool split_csv(std::string_view line, std::vector<std::string_view>& fields) {
@@ -266,6 +274,8 @@ std::string metrics_json(const Options& options, const Metrics& metrics,
     return "{\"schema\":\"astra.replay.metrics.v1\",\"model\":\"" +
            json_escape(options.model) + "\",\"input\":\"" + json_escape(options.input) +
            "\",\"decision_every\":" + std::to_string(options.decision_every) +
+           ",\"taker_fee_ppm\":" + std::to_string(options.taker_fee_ppm) +
+           ",\"market_slippage_ppm\":" + std::to_string(options.market_slippage_ppm) +
            ",\"start_ns\":" + std::to_string(options.start_ns) +
            ",\"end_ns\":" + std::to_string(options.end_ns) + ",\"events\":" +
            std::to_string(metrics.events) + ",\"decisions\":" +
@@ -343,8 +353,8 @@ int main(int argc, char** argv) {
         .quantity_step_units = 1,
         .minimum_notional_units = 100,
         .maker_fee_ppm = 0,
-        .taker_fee_ppm = 500,
-        .market_slippage_ppm = 100,
+        .taker_fee_ppm = options.taker_fee_ppm,
+        .market_slippage_ppm = options.market_slippage_ppm,
         .acknowledgement_latency_ns = 1,
         .cancellation_latency_ns = 0,
     });

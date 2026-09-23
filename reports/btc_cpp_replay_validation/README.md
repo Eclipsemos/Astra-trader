@@ -7,17 +7,23 @@ minute close; it validates causal state transitions and costs, not full-L2 queue
 
 ## Results
 
-| Split | Model | Return | PF | Max DD | Fills | Orders | Fees |
-|---|---|---:|---:|---:|---:|---:|---:|
-| development_train | hold | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
-| development_train | baseline | -2.2028% | 0.907 | 447331 | 120 | 120 | 115223 |
-| development_train | laya | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
-| development_validation | hold | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
-| development_validation | baseline | 0.3822% | 1.177 | 254715 | 116 | 116 | 122708 |
-| development_validation | laya | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
-| holdout_2026 | hold | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
-| holdout_2026 | baseline | -3.9749% | 0.759 | 425295 | 143 | 143 | 102747 |
-| holdout_2026 | laya | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| Split | Model | Cost | Return | PF | Max DD | Fills | Orders | Fees |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| development_train | hold | base | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| development_train | hold | stress | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| development_train | baseline | base | -2.2028% | 0.907 | 447331 | 120 | 120 | 115223 |
+| development_train | baseline | stress | -4.2756% | 0.829 | 575285 | 120 | 120 | 230386 |
+| development_train | laya | base | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| development_validation | hold | base | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| development_validation | hold | stress | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| development_validation | baseline | base | 0.3822% | 1.177 | 254715 | 116 | 116 | 122708 |
+| development_validation | baseline | stress | -1.8254% | 1.074 | 365683 | 116 | 116 | 245358 |
+| development_validation | laya | base | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| holdout_2026 | hold | base | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| holdout_2026 | hold | stress | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
+| holdout_2026 | baseline | base | -3.9749% | 0.759 | 425295 | 143 | 143 | 102747 |
+| holdout_2026 | baseline | stress | -5.8231% | 0.703 | 600242 | 143 | 143 | 205419 |
+| holdout_2026 | laya | base | 0.0000% | 0.000 | 0 | 0 | 0 | 0 |
 
 Laya decision calls: `875`; gateway errors: `0`; directional proposals gated to hold: `875`.
 The model gate requires 550,000 ppm directional probability. `hold` is a control that
@@ -31,7 +37,7 @@ never submits an order. The flow baseline is intentionally simple and is not an 
 - Development validation: 2025-07-01 through 2025-12-31.
 - Untouched holdout: 2026-01-01 through 2026-08-31, matching the available cache cutoff.
 - Decision cadence: every 1,000 normalized events; an order is submitted on the next event.
-- Simulated execution: taker fee 5 bps, market slippage 1 bp, one-minute synthetic spread.
+- Cost scenarios: base 5 bps fee + 1 bp slippage; stress 10 bps fee + 5 bps slippage.
 - Initial cash: 100,000 USDT-equivalent account units; target position: +/-0.1 BTC.
 
 ## Decision
