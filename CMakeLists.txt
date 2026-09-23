@@ -45,6 +45,10 @@ add_executable(astra_trader apps/astra_trader/main.cpp)
 target_link_libraries(astra_trader PRIVATE astra::core)
 astra_strict(astra_trader)
 
+add_executable(astra_replay apps/astra_replay/main.cpp)
+target_link_libraries(astra_replay PRIVATE astra::core)
+astra_strict(astra_replay)
+
 if(BUILD_TESTING)
     find_package(Catch2 3 REQUIRED)
     add_executable(astra_core_tests
@@ -61,4 +65,12 @@ if(BUILD_TESTING)
     astra_strict(astra_core_tests)
     include(Catch)
     catch_discover_tests(astra_core_tests)
+    add_test(
+        NAME astra_replay_fixture
+        COMMAND astra_replay
+            --input ${CMAKE_SOURCE_DIR}/tests/fixtures/replay_sample.csv
+            --output ${CMAKE_CURRENT_BINARY_DIR}/replay_fixture.json
+            --model baseline
+            --decision-every 1
+    )
 endif()

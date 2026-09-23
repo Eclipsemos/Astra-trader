@@ -223,6 +223,7 @@ void PaperExchange::fill(PaperOrder& order, std::int64_t quantity_units,
         .quantity_units = quantity,
         .price_units = price_units,
         .fee_units = fee,
+        .realized_pnl_units = mutation.realized_pnl_units,
         .maker = maker,
     });
 }

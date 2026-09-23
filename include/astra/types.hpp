@@ -68,6 +68,7 @@ struct PaperFill {
     std::int64_t quantity_units{0};
     std::int64_t price_units{0};
     std::int64_t fee_units{0};
+    std::int64_t realized_pnl_units{0};
     bool maker{false};
 };
 

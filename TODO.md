@@ -167,14 +167,14 @@ Exit criteria:
 
 ## Phase 3: Historical Data and Replay
 
-- [ ] Inventory `mmtick` BTC data by venue, market type, date, schema, cadence, and completeness.
-- [ ] Import aggregate trades without duplicating the large source datasets.
+- [x] Inventory `mmtick` BTC data by venue, market type, date, schema, cadence, and completeness.
+- [x] Import aggregate trades without duplicating the large source datasets.
 - [ ] Import historical book-depth curves and clearly distinguish them from full L2 data.
 - [ ] Import the available approximately 13-hour full-depth capture for microstructure validation.
-- [ ] Build the causal replay engine in C++ and run it through the same core state machine used by
-      live market data.
+- [x] Build the causal aggregate replay engine in C++ and run it through the same core state
+      machine used by live market data.
 - [ ] Add configurable inference, network, order acknowledgement, cancel, and fill latency.
-- [ ] Prevent future data leakage in rolling features, labels, queue state, and fills.
+- [x] Prevent future data leakage in rolling features, labels, queue state, and fills.
 - [ ] Reproduce selected prior `mmtick` HFT results as a regression check.
 
 Exit criteria:
@@ -187,13 +187,14 @@ Exit criteria:
 
 - [ ] Select prediction horizons only after measuring the achievable live latency distribution.
 - [ ] Define cost-aware labels based on executable bid/ask prices, not mid-price direction alone.
-- [ ] Use chronological train, validation, and untouched holdout periods.
+- [x] Use chronological train, validation, and untouched holdout periods.
 - [ ] Compare Laya against logistic regression and a small tree/boosting baseline.
 - [ ] Calibrate action probabilities and require expected edge to exceed fees, spread, slippage, and
       a configurable safety margin.
 - [ ] Evaluate results by regime, volatility, liquidity, hour, direction, and holding horizon.
 - [ ] Penalize unstable parameter points and prefer broad performance plateaus.
-- [ ] Reject the model if it does not improve net out-of-sample results over simple baselines.
+- [x] Reject the current model/baseline configuration when it does not improve net out-of-sample
+      results over the control; see `reports/btc_cpp_replay_validation/`.
 
 Minimum research report:
 

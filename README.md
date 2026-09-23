@@ -67,6 +67,18 @@ python3 scripts/generate_btc_threshold_report.py
 
 The report deliberately does not copy the large mmtick history archives into this repository.
 
+The C++ replay gate is generated from the cached mmtick minute stream with:
+
+```bash
+python3 scripts/build_btc_replay_csv.py \
+  --cache /home/ldtdev/qt/mmtick/data/order_flow_cache/btc-1m-2025-20260831-profittaker.pkl \
+  --output data/replay/btc-2025-2026.csv
+python3 scripts/run_btc_cpp_replay_report.py --models hold,baseline,laya
+```
+
+Laya must be running on `127.0.0.1:8000` for the last command. The resulting C++ replay
+report is in [reports/btc_cpp_replay_validation/README.md](reports/btc_cpp_replay_validation/README.md).
+
 ## Current limitations
 
 - The live adapter currently consumes Binance `bookTicker`; aggregate trades and sequenced L2
@@ -80,5 +92,6 @@ The report deliberately does not copy the large mmtick history archives into thi
 - The status endpoint is read-only and intentionally exposes no order-control method.
 - TSan compiles on this host but its runtime exits with `unexpected memory mapping`; ASan/UBSan
   and the normal test suites pass.
-- Durable restart recovery, full L2 reconstruction, and deterministic historical replay remain in
-  the implementation plan in [TODO.md](TODO.md).
+- Durable restart recovery and full L2 reconstruction remain in the implementation plan in
+  [TODO.md](TODO.md). Aggregate replay is implemented, but its synthetic book cannot establish
+  queue-level execution quality.
