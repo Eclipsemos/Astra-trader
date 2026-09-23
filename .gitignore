@@ -1,0 +1,15 @@
+/build/
+/.tools/
+/data/
+/.env
+/.env.*
+!/frontend/.env.example
+*.db
+*.db-shm
+*.db-wal
+*.log
+__pycache__/
+*.py[cod]
+.next/
+frontend/node_modules/
+frontend/npm-debug.log*

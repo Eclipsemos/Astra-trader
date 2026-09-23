@@ -1,0 +1,70 @@
+{
+  "schema": "astra.report.btc-threshold-validation.v1",
+  "generated_at": "2026-09-23T17:05:47.827389+00:00",
+  "scope": {
+    "instrument": "BTCUSDT",
+    "venue": "Binance USD-M Futures public aggregate trades",
+    "purpose": "cost-aware threshold validation before paper exposure",
+    "paper_only": true
+  },
+  "reference_replay": {
+    "source_report": "/home/ldtdev/qt/mmtick/reports/experiments/btc_tick_profittaker/2026-09-14-expanded/results.json",
+    "source_sha256": "fd6521d2ff981775a3bcf96bb48763984faac6ce6608925f9319d41c75d9d1f1",
+    "strategy": "BTCUSDT aggTrade flow-extreme profit-taker",
+    "data": {
+      "minutes": 875501,
+      "first": "2025-01-01T00:00:00+00:00",
+      "last": "2026-08-31T23:59:00+00:00",
+      "source": "data/history_btc_tick"
+    },
+    "protocol": {
+      "development": "2025-01-01 through 2025-12-31 split into train/validation",
+      "holdout": "2026 through archive cutoff",
+      "entry": "threshold event on closed minute; next minute open",
+      "exit": "first intraminute TP/SL touch, same-bar collision resolves to stop, otherwise close",
+      "base_costs": "5 bps fee + 2 bps slippage per fill",
+      "stress_costs": "10 bps fee + 5 bps slippage per fill",
+      "selection_uses_2026": false
+    },
+    "candidate_count": 224,
+    "eligible_count": 0,
+    "selected": null,
+    "decision": {
+      "status": "rejected",
+      "paper_approved": false,
+      "live_approved": false
+    }
+  },
+  "laya_paper_telemetry": {
+    "available": true,
+    "path": "data/paper-events.jsonl",
+    "sha256": "0b396c9fd5c36c1397a978090022fccdb71b5d37583a16a2ba4b796371a19a9a",
+    "events": 7856,
+    "first_sequence": 1000,
+    "last_sequence": 4613000,
+    "actions": {
+      "short": 7855,
+      "hold": 1
+    },
+    "orders": 0,
+    "fills": 0,
+    "latency_ms": {
+      "mean": 341.804,
+      "p50": 347.68,
+      "p95": 379.923,
+      "p99": 394.339
+    }
+  },
+  "approval": {
+    "historical_strategy_approved": false,
+    "paper_trading_approved": false,
+    "live_trading_approved": false,
+    "reason": "No candidate passed chronological development gates; the Laya paper log contains decisions but no simulated orders or fills."
+  },
+  "limitations": [
+    "The reference replay ends at its source archive cutoff (2026-08-31), not 2026-09-23.",
+    "The source replay uses minute aggregates and does not reconstruct a full L2 queue.",
+    "Laya was observed in paper mode but was not historically replayed through the same C++ core.",
+    "No profitability claim is made from a decision-only paper audit log."
+  ]
+}
