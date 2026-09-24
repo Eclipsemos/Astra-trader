@@ -1,0 +1,1801 @@
+{
+  "schema": "astra.report.btc-regime-router-oos.v1",
+  "generated_at": "2026-09-24T09:09:59.910984+00:00",
+  "input": {
+    "replay": "data/replay/btc-2025-2026.csv",
+    "replay_sha256": "23a0fe0d93fdf448ab10312b776bdb5f5b8b62b7d87820d3d81ac618dd1f2e0e",
+    "samples": "/home/ldtdev/qt/mmtick/data/order_flow_cache/btc-laya-1m-samples-v1.csv.gz",
+    "samples_sha256": "54dbfcd8a2fdcad4d49b23a801d66d85000833d7bf0de76cf2564fb66e14a333"
+  },
+  "protocol": {
+    "regime_thresholds": {
+      "efficiency": 0.12594406631199564,
+      "high_vol": 0.0006878217860676098,
+      "low_vol": 0.00033250984395480956
+    },
+    "regimes": [
+      "range_high_vol",
+      "range_low_vol",
+      "range_mid_vol",
+      "trend_down_high_vol",
+      "trend_down_low_vol",
+      "trend_down_mid_vol",
+      "trend_up_high_vol",
+      "trend_up_low_vol",
+      "trend_up_mid_vol"
+    ],
+    "train_only_thresholds": true,
+    "direction_model": "class-weighted softmax baseline",
+    "sample_counts": {
+      "development_train": 4344,
+      "development_validation": 4416,
+      "holdout_2026": 5832
+    }
+  },
+  "calibration": {
+    "objective": "maximum C++ base-cost validation return with at least 30 fills",
+    "selected": {
+      "name": "trend",
+      "allowed": [
+        "trend_down_high_vol",
+        "trend_down_low_vol",
+        "trend_down_mid_vol",
+        "trend_up_high_vol",
+        "trend_up_low_vol",
+        "trend_up_mid_vol"
+      ],
+      "threshold": 0.5,
+      "proxy_score": -6.0,
+      "directional_actions": 123,
+      "validation_return_ppm": 43706,
+      "validation_profit_factor": "1.913",
+      "validation_fills": 62
+    },
+    "candidates": [
+      {
+        "name": "all",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol",
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 34.0,
+        "directional_actions": 1258,
+        "validation_return_ppm": -64758,
+        "validation_profit_factor": "0.974",
+        "validation_fills": 571
+      },
+      {
+        "name": "all",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol",
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 29.0,
+        "directional_actions": 1045,
+        "validation_return_ppm": -54646,
+        "validation_profit_factor": "0.975",
+        "validation_fills": 484
+      },
+      {
+        "name": "all",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol",
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 5.0,
+        "directional_actions": 860,
+        "validation_return_ppm": -58170,
+        "validation_profit_factor": "0.913",
+        "validation_fills": 395
+      },
+      {
+        "name": "all",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol",
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 5.0,
+        "directional_actions": 705,
+        "validation_return_ppm": -44388,
+        "validation_profit_factor": "0.940",
+        "validation_fills": 325
+      },
+      {
+        "name": "all",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol",
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 1.0,
+        "directional_actions": 584,
+        "validation_return_ppm": -51482,
+        "validation_profit_factor": "0.872",
+        "validation_fills": 279
+      },
+      {
+        "name": "all",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol",
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -11.0,
+        "directional_actions": 419,
+        "validation_return_ppm": -31461,
+        "validation_profit_factor": "0.923",
+        "validation_fills": 202
+      },
+      {
+        "name": "all",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol",
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": -6.0,
+        "directional_actions": 207,
+        "validation_return_ppm": -5277,
+        "validation_profit_factor": "1.040",
+        "validation_fills": 104
+      },
+      {
+        "name": "range_high_vol",
+        "allowed": [
+          "range_high_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 22.0,
+        "directional_actions": 363,
+        "validation_return_ppm": -19292,
+        "validation_profit_factor": "0.936",
+        "validation_fills": 127
+      },
+      {
+        "name": "range_high_vol",
+        "allowed": [
+          "range_high_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 18.0,
+        "directional_actions": 345,
+        "validation_return_ppm": -30448,
+        "validation_profit_factor": "0.811",
+        "validation_fills": 119
+      },
+      {
+        "name": "range_high_vol",
+        "allowed": [
+          "range_high_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 12.0,
+        "directional_actions": 323,
+        "validation_return_ppm": -21167,
+        "validation_profit_factor": "0.886",
+        "validation_fills": 109
+      },
+      {
+        "name": "range_high_vol",
+        "allowed": [
+          "range_high_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 9.0,
+        "directional_actions": 286,
+        "validation_return_ppm": -28522,
+        "validation_profit_factor": "0.770",
+        "validation_fills": 95
+      },
+      {
+        "name": "range_high_vol",
+        "allowed": [
+          "range_high_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": -1.0,
+        "directional_actions": 248,
+        "validation_return_ppm": -25025,
+        "validation_profit_factor": "0.795",
+        "validation_fills": 89
+      },
+      {
+        "name": "range_high_vol",
+        "allowed": [
+          "range_high_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -8.0,
+        "directional_actions": 184,
+        "validation_return_ppm": -34378,
+        "validation_profit_factor": "0.649",
+        "validation_fills": 61
+      },
+      {
+        "name": "range_high_vol",
+        "allowed": [
+          "range_high_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": -2.0,
+        "directional_actions": 81,
+        "validation_return_ppm": -31050,
+        "validation_profit_factor": "0.561",
+        "validation_fills": 29
+      },
+      {
+        "name": "range_low_vol",
+        "allowed": [
+          "range_low_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "range_low_vol",
+        "allowed": [
+          "range_low_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "range_low_vol",
+        "allowed": [
+          "range_low_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "range_low_vol",
+        "allowed": [
+          "range_low_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "range_low_vol",
+        "allowed": [
+          "range_low_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "range_low_vol",
+        "allowed": [
+          "range_low_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "range_low_vol",
+        "allowed": [
+          "range_low_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "range_mid_vol",
+        "allowed": [
+          "range_mid_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 23.0,
+        "directional_actions": 288,
+        "validation_return_ppm": -16507,
+        "validation_profit_factor": "0.940",
+        "validation_fills": 105
+      },
+      {
+        "name": "range_mid_vol",
+        "allowed": [
+          "range_mid_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 12.0,
+        "directional_actions": 178,
+        "validation_return_ppm": -3600,
+        "validation_profit_factor": "1.056",
+        "validation_fills": 67
+      },
+      {
+        "name": "range_mid_vol",
+        "allowed": [
+          "range_mid_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 4.0,
+        "directional_actions": 103,
+        "validation_return_ppm": -16792,
+        "validation_profit_factor": "0.756",
+        "validation_fills": 39
+      },
+      {
+        "name": "range_mid_vol",
+        "allowed": [
+          "range_mid_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 11.0,
+        "directional_actions": 47,
+        "validation_return_ppm": -16328,
+        "validation_profit_factor": "0.594",
+        "validation_fills": 17
+      },
+      {
+        "name": "range_mid_vol",
+        "allowed": [
+          "range_mid_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 9.0,
+        "directional_actions": 22,
+        "validation_return_ppm": -5280,
+        "validation_profit_factor": "0.657",
+        "validation_fills": 10
+      },
+      {
+        "name": "range_mid_vol",
+        "allowed": [
+          "range_mid_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": 2.0,
+        "directional_actions": 10,
+        "validation_return_ppm": -36,
+        "validation_profit_factor": "0.818",
+        "validation_fills": 4
+      },
+      {
+        "name": "range_mid_vol",
+        "allowed": [
+          "range_mid_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 2.0,
+        "directional_actions": 3,
+        "validation_return_ppm": 2518,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_down_high_vol",
+        "allowed": [
+          "trend_down_high_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 2.0,
+        "directional_actions": 184,
+        "validation_return_ppm": -17565,
+        "validation_profit_factor": "0.924",
+        "validation_fills": 93
+      },
+      {
+        "name": "trend_down_high_vol",
+        "allowed": [
+          "trend_down_high_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 2.0,
+        "directional_actions": 184,
+        "validation_return_ppm": -17565,
+        "validation_profit_factor": "0.924",
+        "validation_fills": 93
+      },
+      {
+        "name": "trend_down_high_vol",
+        "allowed": [
+          "trend_down_high_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 1.0,
+        "directional_actions": 182,
+        "validation_return_ppm": -17565,
+        "validation_profit_factor": "0.924",
+        "validation_fills": 93
+      },
+      {
+        "name": "trend_down_high_vol",
+        "allowed": [
+          "trend_down_high_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": -1.0,
+        "directional_actions": 178,
+        "validation_return_ppm": -17465,
+        "validation_profit_factor": "0.922",
+        "validation_fills": 91
+      },
+      {
+        "name": "trend_down_high_vol",
+        "allowed": [
+          "trend_down_high_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": -5.0,
+        "directional_actions": 169,
+        "validation_return_ppm": -20222,
+        "validation_profit_factor": "0.893",
+        "validation_fills": 89
+      },
+      {
+        "name": "trend_down_high_vol",
+        "allowed": [
+          "trend_down_high_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -4.0,
+        "directional_actions": 139,
+        "validation_return_ppm": 113,
+        "validation_profit_factor": "1.104",
+        "validation_fills": 73
+      },
+      {
+        "name": "trend_down_high_vol",
+        "allowed": [
+          "trend_down_high_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 0.0,
+        "directional_actions": 84,
+        "validation_return_ppm": 32950,
+        "validation_profit_factor": "1.959",
+        "validation_fills": 41
+      },
+      {
+        "name": "trend_down_low_vol",
+        "allowed": [
+          "trend_down_low_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 0.0,
+        "directional_actions": 4,
+        "validation_return_ppm": 26035,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_down_low_vol",
+        "allowed": [
+          "trend_down_low_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 0.0,
+        "directional_actions": 3,
+        "validation_return_ppm": 26035,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_down_low_vol",
+        "allowed": [
+          "trend_down_low_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 0.0,
+        "directional_actions": 2,
+        "validation_return_ppm": 26104,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_down_low_vol",
+        "allowed": [
+          "trend_down_low_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 0.0,
+        "directional_actions": 1,
+        "validation_return_ppm": 24289,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_down_low_vol",
+        "allowed": [
+          "trend_down_low_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_down_low_vol",
+        "allowed": [
+          "trend_down_low_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_down_low_vol",
+        "allowed": [
+          "trend_down_low_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_down_mid_vol",
+        "allowed": [
+          "trend_down_mid_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": -2.0,
+        "directional_actions": 192,
+        "validation_return_ppm": 21777,
+        "validation_profit_factor": "1.313",
+        "validation_fills": 98
+      },
+      {
+        "name": "trend_down_mid_vol",
+        "allowed": [
+          "trend_down_mid_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 0.0,
+        "directional_actions": 146,
+        "validation_return_ppm": 10166,
+        "validation_profit_factor": "1.198",
+        "validation_fills": 74
+      },
+      {
+        "name": "trend_down_mid_vol",
+        "allowed": [
+          "trend_down_mid_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": -4.0,
+        "directional_actions": 101,
+        "validation_return_ppm": 16569,
+        "validation_profit_factor": "1.367",
+        "validation_fills": 42
+      },
+      {
+        "name": "trend_down_mid_vol",
+        "allowed": [
+          "trend_down_mid_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": -1.0,
+        "directional_actions": 74,
+        "validation_return_ppm": 12023,
+        "validation_profit_factor": "1.301",
+        "validation_fills": 27
+      },
+      {
+        "name": "trend_down_mid_vol",
+        "allowed": [
+          "trend_down_mid_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 3.0,
+        "directional_actions": 51,
+        "validation_return_ppm": 19139,
+        "validation_profit_factor": "1.712",
+        "validation_fills": 19
+      },
+      {
+        "name": "trend_down_mid_vol",
+        "allowed": [
+          "trend_down_mid_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": 5.0,
+        "directional_actions": 27,
+        "validation_return_ppm": 32762,
+        "validation_profit_factor": "1.278",
+        "validation_fills": 5
+      },
+      {
+        "name": "trend_down_mid_vol",
+        "allowed": [
+          "trend_down_mid_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": -2.0,
+        "directional_actions": 10,
+        "validation_return_ppm": 31550,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_up_high_vol",
+        "allowed": [
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": -7.0,
+        "directional_actions": 152,
+        "validation_return_ppm": 8778,
+        "validation_profit_factor": "1.194",
+        "validation_fills": 73
+      },
+      {
+        "name": "trend_up_high_vol",
+        "allowed": [
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 0.0,
+        "directional_actions": 137,
+        "validation_return_ppm": 25945,
+        "validation_profit_factor": "1.470",
+        "validation_fills": 69
+      },
+      {
+        "name": "trend_up_high_vol",
+        "allowed": [
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": -4.0,
+        "directional_actions": 120,
+        "validation_return_ppm": 34372,
+        "validation_profit_factor": "1.778",
+        "validation_fills": 62
+      },
+      {
+        "name": "trend_up_high_vol",
+        "allowed": [
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": -11.0,
+        "directional_actions": 102,
+        "validation_return_ppm": 7876,
+        "validation_profit_factor": "1.202",
+        "validation_fills": 54
+      },
+      {
+        "name": "trend_up_high_vol",
+        "allowed": [
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": -6.0,
+        "directional_actions": 82,
+        "validation_return_ppm": -11910,
+        "validation_profit_factor": "0.862",
+        "validation_fills": 41
+      },
+      {
+        "name": "trend_up_high_vol",
+        "allowed": [
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -5.0,
+        "directional_actions": 55,
+        "validation_return_ppm": 3089,
+        "validation_profit_factor": "1.188",
+        "validation_fills": 23
+      },
+      {
+        "name": "trend_up_high_vol",
+        "allowed": [
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": -4.0,
+        "directional_actions": 28,
+        "validation_return_ppm": 4062,
+        "validation_profit_factor": "1.232",
+        "validation_fills": 16
+      },
+      {
+        "name": "trend_up_low_vol",
+        "allowed": [
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": -1.0,
+        "directional_actions": 1,
+        "validation_return_ppm": -22590,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_up_low_vol",
+        "allowed": [
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_up_low_vol",
+        "allowed": [
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_up_low_vol",
+        "allowed": [
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_up_low_vol",
+        "allowed": [
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_up_low_vol",
+        "allowed": [
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_up_low_vol",
+        "allowed": [
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "trend_up_mid_vol",
+        "allowed": [
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": -3.0,
+        "directional_actions": 74,
+        "validation_return_ppm": 12595,
+        "validation_profit_factor": "1.386",
+        "validation_fills": 31
+      },
+      {
+        "name": "trend_up_mid_vol",
+        "allowed": [
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": -3.0,
+        "directional_actions": 52,
+        "validation_return_ppm": -8147,
+        "validation_profit_factor": "0.859",
+        "validation_fills": 23
+      },
+      {
+        "name": "trend_up_mid_vol",
+        "allowed": [
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": -4.0,
+        "directional_actions": 29,
+        "validation_return_ppm": -18028,
+        "validation_profit_factor": "0.434",
+        "validation_fills": 11
+      },
+      {
+        "name": "trend_up_mid_vol",
+        "allowed": [
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": -2.0,
+        "directional_actions": 17,
+        "validation_return_ppm": -5609,
+        "validation_profit_factor": "0.624",
+        "validation_fills": 5
+      },
+      {
+        "name": "trend_up_mid_vol",
+        "allowed": [
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 1.0,
+        "directional_actions": 12,
+        "validation_return_ppm": -4708,
+        "validation_profit_factor": "0.644",
+        "validation_fills": 3
+      },
+      {
+        "name": "trend_up_mid_vol",
+        "allowed": [
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -1.0,
+        "directional_actions": 4,
+        "validation_return_ppm": 30005,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend_up_mid_vol",
+        "allowed": [
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 0.0,
+        "directional_actions": 1,
+        "validation_return_ppm": 36493,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "trend",
+        "allowed": [
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": -11.0,
+        "directional_actions": 607,
+        "validation_return_ppm": -1140,
+        "validation_profit_factor": "1.181",
+        "validation_fills": 293
+      },
+      {
+        "name": "trend",
+        "allowed": [
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": -1.0,
+        "directional_actions": 522,
+        "validation_return_ppm": -28183,
+        "validation_profit_factor": "0.992",
+        "validation_fills": 259
+      },
+      {
+        "name": "trend",
+        "allowed": [
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": -11.0,
+        "directional_actions": 434,
+        "validation_return_ppm": -29506,
+        "validation_profit_factor": "0.967",
+        "validation_fills": 233
+      },
+      {
+        "name": "trend",
+        "allowed": [
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": -15.0,
+        "directional_actions": 372,
+        "validation_return_ppm": -17006,
+        "validation_profit_factor": "1.027",
+        "validation_fills": 201
+      },
+      {
+        "name": "trend",
+        "allowed": [
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": -7.0,
+        "directional_actions": 314,
+        "validation_return_ppm": -36220,
+        "validation_profit_factor": "0.873",
+        "validation_fills": 169
+      },
+      {
+        "name": "trend",
+        "allowed": [
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -5.0,
+        "directional_actions": 225,
+        "validation_return_ppm": -29645,
+        "validation_profit_factor": "0.850",
+        "validation_fills": 116
+      },
+      {
+        "name": "trend",
+        "allowed": [
+          "trend_down_high_vol",
+          "trend_down_low_vol",
+          "trend_down_mid_vol",
+          "trend_up_high_vol",
+          "trend_up_low_vol",
+          "trend_up_mid_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": -6.0,
+        "directional_actions": 123,
+        "validation_return_ppm": 43706,
+        "validation_profit_factor": "1.913",
+        "validation_fills": 62
+      },
+      {
+        "name": "range",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 45.0,
+        "directional_actions": 651,
+        "validation_return_ppm": -58844,
+        "validation_profit_factor": "0.788",
+        "validation_fills": 237
+      },
+      {
+        "name": "range",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 30.0,
+        "directional_actions": 523,
+        "validation_return_ppm": -32327,
+        "validation_profit_factor": "0.898",
+        "validation_fills": 191
+      },
+      {
+        "name": "range",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 16.0,
+        "directional_actions": 426,
+        "validation_return_ppm": -21869,
+        "validation_profit_factor": "0.943",
+        "validation_fills": 155
+      },
+      {
+        "name": "range",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 20.0,
+        "directional_actions": 333,
+        "validation_return_ppm": -33370,
+        "validation_profit_factor": "0.831",
+        "validation_fills": 131
+      },
+      {
+        "name": "range",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 8.0,
+        "directional_actions": 270,
+        "validation_return_ppm": -19227,
+        "validation_profit_factor": "0.911",
+        "validation_fills": 109
+      },
+      {
+        "name": "range",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -6.0,
+        "directional_actions": 194,
+        "validation_return_ppm": -26690,
+        "validation_profit_factor": "0.746",
+        "validation_fills": 70
+      },
+      {
+        "name": "range",
+        "allowed": [
+          "range_high_vol",
+          "range_low_vol",
+          "range_mid_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 0.0,
+        "directional_actions": 84,
+        "validation_return_ppm": -34068,
+        "validation_profit_factor": "0.573",
+        "validation_fills": 33
+      },
+      {
+        "name": "high_vol",
+        "allowed": [
+          "range_high_vol",
+          "trend_down_high_vol",
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": 17.0,
+        "directional_actions": 699,
+        "validation_return_ppm": -37720,
+        "validation_profit_factor": "0.964",
+        "validation_fills": 307
+      },
+      {
+        "name": "high_vol",
+        "allowed": [
+          "range_high_vol",
+          "trend_down_high_vol",
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 20.0,
+        "directional_actions": 666,
+        "validation_return_ppm": -30807,
+        "validation_profit_factor": "0.996",
+        "validation_fills": 297
+      },
+      {
+        "name": "high_vol",
+        "allowed": [
+          "range_high_vol",
+          "trend_down_high_vol",
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 9.0,
+        "directional_actions": 625,
+        "validation_return_ppm": -31363,
+        "validation_profit_factor": "0.981",
+        "validation_fills": 277
+      },
+      {
+        "name": "high_vol",
+        "allowed": [
+          "range_high_vol",
+          "trend_down_high_vol",
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": -3.0,
+        "directional_actions": 566,
+        "validation_return_ppm": -30357,
+        "validation_profit_factor": "0.968",
+        "validation_fills": 247
+      },
+      {
+        "name": "high_vol",
+        "allowed": [
+          "range_high_vol",
+          "trend_down_high_vol",
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": -12.0,
+        "directional_actions": 499,
+        "validation_return_ppm": -33842,
+        "validation_profit_factor": "0.937",
+        "validation_fills": 233
+      },
+      {
+        "name": "high_vol",
+        "allowed": [
+          "range_high_vol",
+          "trend_down_high_vol",
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": -17.0,
+        "directional_actions": 378,
+        "validation_return_ppm": -32091,
+        "validation_profit_factor": "0.898",
+        "validation_fills": 178
+      },
+      {
+        "name": "high_vol",
+        "allowed": [
+          "range_high_vol",
+          "trend_down_high_vol",
+          "trend_up_high_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": -6.0,
+        "directional_actions": 193,
+        "validation_return_ppm": -9311,
+        "validation_profit_factor": "0.989",
+        "validation_fills": 91
+      },
+      {
+        "name": "low_vol",
+        "allowed": [
+          "range_low_vol",
+          "trend_down_low_vol",
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.34,
+        "proxy_score": -1.0,
+        "directional_actions": 5,
+        "validation_return_ppm": -19145,
+        "validation_profit_factor": "inf",
+        "validation_fills": 2
+      },
+      {
+        "name": "low_vol",
+        "allowed": [
+          "range_low_vol",
+          "trend_down_low_vol",
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.36,
+        "proxy_score": 0.0,
+        "directional_actions": 3,
+        "validation_return_ppm": 26035,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "low_vol",
+        "allowed": [
+          "range_low_vol",
+          "trend_down_low_vol",
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.38,
+        "proxy_score": 0.0,
+        "directional_actions": 2,
+        "validation_return_ppm": 26104,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "low_vol",
+        "allowed": [
+          "range_low_vol",
+          "trend_down_low_vol",
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.4,
+        "proxy_score": 0.0,
+        "directional_actions": 1,
+        "validation_return_ppm": 24289,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 1
+      },
+      {
+        "name": "low_vol",
+        "allowed": [
+          "range_low_vol",
+          "trend_down_low_vol",
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.42,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "low_vol",
+        "allowed": [
+          "range_low_vol",
+          "trend_down_low_vol",
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.45,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      },
+      {
+        "name": "low_vol",
+        "allowed": [
+          "range_low_vol",
+          "trend_down_low_vol",
+          "trend_up_low_vol"
+        ],
+        "threshold": 0.5,
+        "proxy_score": 0.0,
+        "directional_actions": 0,
+        "validation_return_ppm": 0,
+        "validation_profit_factor": "0.000",
+        "validation_fills": 0
+      }
+    ]
+  },
+  "prediction": {
+    "development_train": {
+      "accuracy": 0.370396,
+      "label_counts": {
+        "long": 1436,
+        "short": 1349,
+        "hold": 1559
+      },
+      "action_counts": {
+        "hold": 4156,
+        "short": 53,
+        "long": 135
+      },
+      "directional_actions": 188,
+      "proxy_score": 20.0,
+      "log_loss": 11.015854
+    },
+    "development_validation": {
+      "accuracy": 0.416214,
+      "label_counts": {
+        "hold": 1814,
+        "short": 1294,
+        "long": 1308
+      },
+      "action_counts": {
+        "hold": 4293,
+        "long": 50,
+        "short": 73
+      },
+      "directional_actions": 123,
+      "proxy_score": -6.0,
+      "log_loss": 9.761373
+    },
+    "holdout_2026": {
+      "accuracy": 0.396433,
+      "label_counts": {
+        "long": 1773,
+        "hold": 2239,
+        "short": 1820
+      },
+      "action_counts": {
+        "hold": 5568,
+        "short": 141,
+        "long": 123
+      },
+      "directional_actions": 264,
+      "proxy_score": -10.0,
+      "log_loss": 10.241385
+    }
+  },
+  "decision_tapes": {
+    "development_train": {
+      "path": "reports/btc_regime_router_oos/development_train-regime-tape.csv",
+      "sha256": "991eb483c3fc422562d56064e1eef4bb6f4a802f15b2bc5a677c1e002ad2c6a9",
+      "bytes": 122283
+    },
+    "development_validation": {
+      "path": "reports/btc_regime_router_oos/development_validation-regime-tape.csv",
+      "sha256": "258d8b61b9be8ea2c29fc321fc829b9789d49bdd700d6c97643301c7a1111dc5",
+      "bytes": 127411
+    },
+    "holdout_2026": {
+      "path": "reports/btc_regime_router_oos/holdout_2026-regime-tape.csv",
+      "sha256": "cd2f429a532b70c53bccb38aff4e36b3b14748817fd6b4b4b274e7427d52fe40",
+      "bytes": 167990
+    }
+  },
+  "cpp_tape_evaluation": {
+    "development_train": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1735689600000000000,
+        "end_ns": 1751327999000000000,
+        "events": 260640,
+        "decisions": 8688,
+        "signals": 75,
+        "accepted_orders": 75,
+        "rejected_orders": 0,
+        "fills": 75,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10542455,
+        "pnl_units": 542455,
+        "return_ppm": 54245,
+        "max_drawdown_units": 294755,
+        "realized_pnl_units": 684679,
+        "unrealized_pnl_units": -73881,
+        "fees_units": 68343,
+        "gross_profit_units": 1229144,
+        "gross_loss_units": 544465,
+        "profit_factor": "2.257",
+        "position_units": -100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1735689600000000000,
+        "end_ns": 1751327999000000000,
+        "events": 260640,
+        "decisions": 8688,
+        "signals": 75,
+        "accepted_orders": 75,
+        "rejected_orders": 0,
+        "fills": 75,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10419496,
+        "pnl_units": 419496,
+        "return_ppm": 41949,
+        "max_drawdown_units": 316152,
+        "realized_pnl_units": 630431,
+        "unrealized_pnl_units": -74280,
+        "fees_units": 136655,
+        "gross_profit_units": 1194977,
+        "gross_loss_units": 564546,
+        "profit_factor": "2.116",
+        "position_units": -100
+      }
+    },
+    "development_validation": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1751328000000000000,
+        "end_ns": 1767225599000000000,
+        "events": 264941,
+        "decisions": 8831,
+        "signals": 62,
+        "accepted_orders": 62,
+        "rejected_orders": 0,
+        "fills": 62,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10437067,
+        "pnl_units": 437067,
+        "return_ppm": 43706,
+        "max_drawdown_units": 171029,
+        "realized_pnl_units": 489248,
+        "unrealized_pnl_units": 9964,
+        "fees_units": 62145,
+        "gross_profit_units": 1025059,
+        "gross_loss_units": 535811,
+        "profit_factor": "1.913",
+        "position_units": -100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1751328000000000000,
+        "end_ns": 1767225599000000000,
+        "events": 264941,
+        "decisions": 8831,
+        "signals": 62,
+        "accepted_orders": 62,
+        "rejected_orders": 0,
+        "fills": 62,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10325249,
+        "pnl_units": 325249,
+        "return_ppm": 32524,
+        "max_drawdown_units": 188408,
+        "realized_pnl_units": 439899,
+        "unrealized_pnl_units": 9610,
+        "fees_units": 124260,
+        "gross_profit_units": 996280,
+        "gross_loss_units": 556381,
+        "profit_factor": "1.790",
+        "position_units": -100
+      }
+    },
+    "holdout_2026": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1788220799000000000,
+        "events": 349920,
+        "decisions": 11664,
+        "signals": 132,
+        "accepted_orders": 132,
+        "rejected_orders": 0,
+        "fills": 132,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10021224,
+        "pnl_units": 21224,
+        "return_ppm": 2122,
+        "max_drawdown_units": 306026,
+        "realized_pnl_units": 105976,
+        "unrealized_pnl_units": 8121,
+        "fees_units": 92873,
+        "gross_profit_units": 1160822,
+        "gross_loss_units": 1054846,
+        "profit_factor": "1.100",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1788220799000000000,
+        "events": 349920,
+        "decisions": 11664,
+        "signals": 132,
+        "accepted_orders": 132,
+        "rejected_orders": 0,
+        "fills": 132,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9854175,
+        "pnl_units": -145825,
+        "return_ppm": -14582,
+        "max_drawdown_units": 386128,
+        "realized_pnl_units": 32055,
+        "unrealized_pnl_units": 7810,
+        "fees_units": 185690,
+        "gross_profit_units": 1121210,
+        "gross_loss_units": 1089155,
+        "profit_factor": "1.029",
+        "position_units": 100
+      }
+    }
+  },
+  "holdout_periods": {
+    "2026_q1": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1775001599000000000,
+        "events": 129600,
+        "decisions": 4320,
+        "signals": 68,
+        "accepted_orders": 68,
+        "rejected_orders": 0,
+        "fills": 68,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10152793,
+        "pnl_units": 152793,
+        "return_ppm": 15279,
+        "max_drawdown_units": 185177,
+        "realized_pnl_units": 211690,
+        "unrealized_pnl_units": -9544,
+        "fees_units": 49353,
+        "gross_profit_units": 737558,
+        "gross_loss_units": 525868,
+        "profit_factor": "1.402",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1775001599000000000,
+        "events": 129600,
+        "decisions": 4320,
+        "signals": 68,
+        "accepted_orders": 68,
+        "rejected_orders": 0,
+        "fills": 68,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10064010,
+        "pnl_units": 64010,
+        "return_ppm": 6401,
+        "max_drawdown_units": 208389,
+        "realized_pnl_units": 172512,
+        "unrealized_pnl_units": -9820,
+        "fees_units": 98682,
+        "gross_profit_units": 715116,
+        "gross_loss_units": 542604,
+        "profit_factor": "1.317",
+        "position_units": 100
+      }
+    },
+    "2026_q2": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1775001600000000000,
+        "end_ns": 1782863999000000000,
+        "events": 131040,
+        "decisions": 4368,
+        "signals": 52,
+        "accepted_orders": 52,
+        "rejected_orders": 0,
+        "fills": 52,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9969709,
+        "pnl_units": -30291,
+        "return_ppm": -3029,
+        "max_drawdown_units": 184285,
+        "realized_pnl_units": 2221,
+        "unrealized_pnl_units": 2239,
+        "fees_units": 34751,
+        "gross_profit_units": 336504,
+        "gross_loss_units": 334283,
+        "profit_factor": "1.006",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1775001600000000000,
+        "end_ns": 1782863999000000000,
+        "events": 131040,
+        "decisions": 4368,
+        "signals": 52,
+        "accepted_orders": 52,
+        "rejected_orders": 0,
+        "fills": 52,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9907216,
+        "pnl_units": -92784,
+        "return_ppm": -9278,
+        "max_drawdown_units": 213666,
+        "realized_pnl_units": -25313,
+        "unrealized_pnl_units": 2006,
+        "fees_units": 69477,
+        "gross_profit_units": 322113,
+        "gross_loss_units": 347426,
+        "profit_factor": "0.927",
+        "position_units": 100
+      }
+    },
+    "2026_jul_aug": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1782864000000000000,
+        "end_ns": 1788220799000000000,
+        "events": 89280,
+        "decisions": 2976,
+        "signals": 12,
+        "accepted_orders": 12,
+        "rejected_orders": 0,
+        "fills": 12,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9906356,
+        "pnl_units": -93644,
+        "return_ppm": -9364,
+        "max_drawdown_units": 141685,
+        "realized_pnl_units": -93627,
+        "unrealized_pnl_units": 8121,
+        "fees_units": 8138,
+        "gross_profit_units": 83355,
+        "gross_loss_units": 176982,
+        "profit_factor": "0.470",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1782864000000000000,
+        "end_ns": 1788220799000000000,
+        "events": 89280,
+        "decisions": 2976,
+        "signals": 12,
+        "accepted_orders": 12,
+        "rejected_orders": 0,
+        "fills": 12,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9891717,
+        "pnl_units": -108283,
+        "return_ppm": -10828,
+        "max_drawdown_units": 153293,
+        "realized_pnl_units": -99823,
+        "unrealized_pnl_units": 7810,
+        "fees_units": 16270,
+        "gross_profit_units": 81044,
+        "gross_loss_units": 180867,
+        "profit_factor": "0.448",
+        "position_units": 100
+      }
+    }
+  },
+  "decision": {
+    "paper_approved": false,
+    "reason": "Regime router is a research experiment and must pass rolling OOS and cost gates."
+  }
+}

@@ -1,0 +1,544 @@
+{
+  "schema": "astra.report.btc-regime-experts-oos.v1",
+  "generated_at": "2026-09-24T09:12:13.438938+00:00",
+  "input": {
+    "replay": "data/replay/btc-2025-2026.csv",
+    "replay_sha256": "23a0fe0d93fdf448ab10312b776bdb5f5b8b62b7d87820d3d81ac618dd1f2e0e",
+    "samples": "/home/ldtdev/qt/mmtick/data/order_flow_cache/btc-laya-1m-samples-v1.csv.gz",
+    "samples_sha256": "54dbfcd8a2fdcad4d49b23a801d66d85000833d7bf0de76cf2564fb66e14a333"
+  },
+  "protocol": {
+    "router": "causal trend_up/trend_down/range",
+    "regime_thresholds": {
+      "efficiency": 0.12594406631199564,
+      "high_vol": 0.0006878217860676098,
+      "low_vol": 0.00033250984395480956
+    },
+    "experts": {
+      "trend_up": {
+        "train_rows": 893
+      },
+      "trend_down": {
+        "train_rows": 845
+      },
+      "range": {
+        "train_rows": 2606
+      }
+    },
+    "sample_counts": {
+      "development_train": 4344,
+      "development_validation": 4416,
+      "holdout_2026": 5832
+    }
+  },
+  "calibration": {
+    "objective": "maximum C++ base-cost validation return with at least 30 fills",
+    "selected": {
+      "threshold": 0.6,
+      "validation_return_ppm": -2658,
+      "validation_profit_factor": "1.015",
+      "validation_fills": 40,
+      "proxy_score": -15.0
+    },
+    "candidates": [
+      {
+        "threshold": 0.34,
+        "validation_return_ppm": -134844,
+        "validation_profit_factor": "0.793",
+        "validation_fills": 698,
+        "proxy_score": -84.0
+      },
+      {
+        "threshold": 0.36,
+        "validation_return_ppm": -109296,
+        "validation_profit_factor": "0.805",
+        "validation_fills": 546,
+        "proxy_score": -62.0
+      },
+      {
+        "threshold": 0.38,
+        "validation_return_ppm": -112720,
+        "validation_profit_factor": "0.732",
+        "validation_fills": 430,
+        "proxy_score": -63.0
+      },
+      {
+        "threshold": 0.4,
+        "validation_return_ppm": -95565,
+        "validation_profit_factor": "0.723",
+        "validation_fills": 342,
+        "proxy_score": -49.0
+      },
+      {
+        "threshold": 0.42,
+        "validation_return_ppm": -83434,
+        "validation_profit_factor": "0.730",
+        "validation_fills": 272,
+        "proxy_score": -62.0
+      },
+      {
+        "threshold": 0.45,
+        "validation_return_ppm": -55376,
+        "validation_profit_factor": "0.778",
+        "validation_fills": 200,
+        "proxy_score": -51.0
+      },
+      {
+        "threshold": 0.5,
+        "validation_return_ppm": -49490,
+        "validation_profit_factor": "0.698",
+        "validation_fills": 108,
+        "proxy_score": -42.0
+      },
+      {
+        "threshold": 0.55,
+        "validation_return_ppm": -32119,
+        "validation_profit_factor": "0.755",
+        "validation_fills": 72,
+        "proxy_score": -28.0
+      },
+      {
+        "threshold": 0.6,
+        "validation_return_ppm": -2658,
+        "validation_profit_factor": "1.015",
+        "validation_fills": 40,
+        "proxy_score": -15.0
+      }
+    ]
+  },
+  "prediction": {
+    "development_train": {
+      "accuracy": 0.371777,
+      "label_counts": {
+        "long": 1436,
+        "short": 1349,
+        "hold": 1559
+      },
+      "action_counts": {
+        "hold": 4200,
+        "long": 123,
+        "short": 21
+      },
+      "directional_actions": 144,
+      "proxy_score": 13.0,
+      "log_loss": 1.072553
+    },
+    "development_validation": {
+      "accuracy": 0.414402,
+      "label_counts": {
+        "hold": 1814,
+        "short": 1294,
+        "long": 1308
+      },
+      "action_counts": {
+        "hold": 4336,
+        "long": 58,
+        "short": 22
+      },
+      "directional_actions": 80,
+      "proxy_score": -15.0,
+      "log_loss": 1.06533
+    },
+    "holdout_2026": {
+      "accuracy": 0.394719,
+      "label_counts": {
+        "long": 1773,
+        "hold": 2239,
+        "short": 1820
+      },
+      "action_counts": {
+        "hold": 5652,
+        "short": 69,
+        "long": 111
+      },
+      "directional_actions": 180,
+      "proxy_score": 9.0,
+      "log_loss": 1.072523
+    }
+  },
+  "decision_tapes": {
+    "development_train": {
+      "path": "reports/btc_regime_experts_oos/development_train-experts-tape.csv",
+      "sha256": "19ea017fd601a6786375de4199ac8f4e6e7afc3dad11fe73ee9b6541a799b42a",
+      "bytes": 145502
+    },
+    "development_validation": {
+      "path": "reports/btc_regime_experts_oos/development_validation-experts-tape.csv",
+      "sha256": "3b7f844ddead6cb1e8d74c43347bc8e4612804836fd266e2951113ab22b6355f",
+      "bytes": 149983
+    },
+    "holdout_2026": {
+      "path": "reports/btc_regime_experts_oos/holdout_2026-experts-tape.csv",
+      "sha256": "13d07afe04d8adb877c68b436e021907d73f2d00b8a215670f8a8278d4d27c7c",
+      "bytes": 197788
+    }
+  },
+  "cpp_tape_evaluation": {
+    "development_train": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1735689600000000000,
+        "end_ns": 1751327999000000000,
+        "events": 260640,
+        "decisions": 8688,
+        "signals": 35,
+        "accepted_orders": 35,
+        "rejected_orders": 0,
+        "fills": 35,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10499802,
+        "pnl_units": 499802,
+        "return_ppm": 49980,
+        "max_drawdown_units": 263897,
+        "realized_pnl_units": 504201,
+        "unrealized_pnl_units": 28235,
+        "fees_units": 32634,
+        "gross_profit_units": 914999,
+        "gross_loss_units": 410798,
+        "profit_factor": "2.227",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1735689600000000000,
+        "end_ns": 1751327999000000000,
+        "events": 260640,
+        "decisions": 8688,
+        "signals": 35,
+        "accepted_orders": 35,
+        "rejected_orders": 0,
+        "fills": 35,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10441090,
+        "pnl_units": 441090,
+        "return_ppm": 44109,
+        "max_drawdown_units": 268800,
+        "realized_pnl_units": 478523,
+        "unrealized_pnl_units": 27818,
+        "fees_units": 65251,
+        "gross_profit_units": 895991,
+        "gross_loss_units": 417468,
+        "profit_factor": "2.146",
+        "position_units": 100
+      }
+    },
+    "development_validation": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1751328000000000000,
+        "end_ns": 1767225599000000000,
+        "events": 264941,
+        "decisions": 8831,
+        "signals": 40,
+        "accepted_orders": 40,
+        "rejected_orders": 0,
+        "fills": 40,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9973418,
+        "pnl_units": -26582,
+        "return_ppm": -2658,
+        "max_drawdown_units": 386085,
+        "realized_pnl_units": 9105,
+        "unrealized_pnl_units": 3771,
+        "fees_units": 39458,
+        "gross_profit_units": 608197,
+        "gross_loss_units": 599092,
+        "profit_factor": "1.015",
+        "position_units": -100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1751328000000000000,
+        "end_ns": 1767225599000000000,
+        "events": 264941,
+        "decisions": 8831,
+        "signals": 40,
+        "accepted_orders": 40,
+        "rejected_orders": 0,
+        "fills": 40,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9902420,
+        "pnl_units": -97580,
+        "return_ppm": -9758,
+        "max_drawdown_units": 434550,
+        "realized_pnl_units": -22102,
+        "unrealized_pnl_units": 3419,
+        "fees_units": 78897,
+        "gross_profit_units": 590991,
+        "gross_loss_units": 613093,
+        "profit_factor": "0.963",
+        "position_units": -100
+      }
+    },
+    "holdout_2026": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1788220799000000000,
+        "events": 349920,
+        "decisions": 11664,
+        "signals": 80,
+        "accepted_orders": 80,
+        "rejected_orders": 0,
+        "fills": 80,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9593068,
+        "pnl_units": -406932,
+        "return_ppm": -40693,
+        "max_drawdown_units": 479453,
+        "realized_pnl_units": -345487,
+        "unrealized_pnl_units": -5315,
+        "fees_units": 56130,
+        "gross_profit_units": 591878,
+        "gross_loss_units": 937365,
+        "profit_factor": "0.631",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1788220799000000000,
+        "events": 349920,
+        "decisions": 11664,
+        "signals": 80,
+        "accepted_orders": 80,
+        "rejected_orders": 0,
+        "fills": 80,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9492111,
+        "pnl_units": -507889,
+        "return_ppm": -50788,
+        "max_drawdown_units": 577885,
+        "realized_pnl_units": -390042,
+        "unrealized_pnl_units": -5631,
+        "fees_units": 112216,
+        "gross_profit_units": 571188,
+        "gross_loss_units": 961230,
+        "profit_factor": "0.594",
+        "position_units": 100
+      }
+    }
+  },
+  "holdout_periods": {
+    "2026_q1": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1775001599000000000,
+        "events": 129600,
+        "decisions": 4320,
+        "signals": 57,
+        "accepted_orders": 57,
+        "rejected_orders": 0,
+        "fills": 57,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9662434,
+        "pnl_units": -337566,
+        "return_ppm": -33756,
+        "max_drawdown_units": 426201,
+        "realized_pnl_units": -296429,
+        "unrealized_pnl_units": -532,
+        "fees_units": 40605,
+        "gross_profit_units": 336378,
+        "gross_loss_units": 632807,
+        "profit_factor": "0.531",
+        "position_units": -100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1775001599000000000,
+        "events": 129600,
+        "decisions": 4320,
+        "signals": 57,
+        "accepted_orders": 57,
+        "rejected_orders": 0,
+        "fills": 57,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9589391,
+        "pnl_units": -410609,
+        "return_ppm": -41060,
+        "max_drawdown_units": 495557,
+        "realized_pnl_units": -328621,
+        "unrealized_pnl_units": -805,
+        "fees_units": 81183,
+        "gross_profit_units": 322539,
+        "gross_loss_units": 651160,
+        "profit_factor": "0.495",
+        "position_units": -100
+      }
+    },
+    "2026_q2": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1775001600000000000,
+        "end_ns": 1782863999000000000,
+        "events": 131040,
+        "decisions": 4368,
+        "signals": 19,
+        "accepted_orders": 19,
+        "rejected_orders": 0,
+        "fills": 19,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10082020,
+        "pnl_units": 82020,
+        "return_ppm": 8202,
+        "max_drawdown_units": 93032,
+        "realized_pnl_units": 96947,
+        "unrealized_pnl_units": -2681,
+        "fees_units": 12246,
+        "gross_profit_units": 217192,
+        "gross_loss_units": 120245,
+        "profit_factor": "1.806",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1775001600000000000,
+        "end_ns": 1782863999000000000,
+        "events": 131040,
+        "decisions": 4368,
+        "signals": 19,
+        "accepted_orders": 19,
+        "rejected_orders": 0,
+        "fills": 19,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10060005,
+        "pnl_units": 60005,
+        "return_ppm": 6000,
+        "max_drawdown_units": 99527,
+        "realized_pnl_units": 87398,
+        "unrealized_pnl_units": -2917,
+        "fees_units": 24476,
+        "gross_profit_units": 211367,
+        "gross_loss_units": 123969,
+        "profit_factor": "1.704",
+        "position_units": 100
+      }
+    },
+    "2026_jul_aug": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1782864000000000000,
+        "end_ns": 1788220799000000000,
+        "events": 89280,
+        "decisions": 2976,
+        "signals": 5,
+        "accepted_orders": 5,
+        "rejected_orders": 0,
+        "fills": 5,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9812370,
+        "pnl_units": -187630,
+        "return_ppm": -18763,
+        "max_drawdown_units": 213419,
+        "realized_pnl_units": -179066,
+        "unrealized_pnl_units": -5315,
+        "fees_units": 3249,
+        "gross_profit_units": 5247,
+        "gross_loss_units": 184313,
+        "profit_factor": "0.028",
+        "position_units": 100
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1782864000000000000,
+        "end_ns": 1788220799000000000,
+        "events": 89280,
+        "decisions": 2976,
+        "signals": 5,
+        "accepted_orders": 5,
+        "rejected_orders": 0,
+        "fills": 5,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 9806525,
+        "pnl_units": -193475,
+        "return_ppm": -19347,
+        "max_drawdown_units": 217532,
+        "realized_pnl_units": -181347,
+        "unrealized_pnl_units": -5631,
+        "fees_units": 6497,
+        "gross_profit_units": 4754,
+        "gross_loss_units": 186101,
+        "profit_factor": "0.025",
+        "position_units": 100
+      }
+    }
+  },
+  "decision": {
+    "paper_approved": false,
+    "reason": "Regime experts must clear aggregate, stress-cost, and subperiod gates before paper use."
+  }
+}
