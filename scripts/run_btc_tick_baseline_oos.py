@@ -21,7 +21,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-FEATURES = ("ret_1m", "ret_5m", "ret_15m", "ret_60m", "vol_60m", "flow_5m", "trades_5m", "spread_proxy")
+BASE_FEATURES = ("ret_1m", "ret_5m", "ret_15m", "ret_60m", "vol_60m", "flow_5m", "trades_5m", "spread_proxy")
+FEATURES = BASE_FEATURES
 SPLITS = ("development_train", "development_validation", "holdout_2026")
 CLASS_NAMES = ("hold", "long", "short")
 COSTS = {"base": (500, 100), "stress": (1_000, 500)}
@@ -80,7 +81,7 @@ def load_samples(path: Path, replay_sequences: dict[int, int]) -> list[dict[str,
                 {
                     "split": split,
                     "sequence": sequence,
-                    "features": [float(record[name]) for name in FEATURES],
+                    "features": [float(record[name]) for name in BASE_FEATURES],
                     "label": int(record["label"]),
                 }
             )
@@ -149,6 +150,22 @@ def relabel(rows: list[dict[str, Any]], prices: list[float], horizon: int, round
         row["label"] = 1 if long_edge > margin and long_edge >= short_edge else 2 if short_edge > margin else 0
 
 
+def add_directional_features(rows: list[dict[str, Any]], prices: list[float]) -> None:
+    for row in rows:
+        index = int(row["sequence"]) - 1
+        def log_return(lookback: int) -> float:
+            return math.log(prices[index] / prices[index - lookback]) if index >= lookback and prices[index - lookback] > 0 else 0.0
+
+        def efficiency(lookback: int) -> float:
+            if index < lookback or prices[index - lookback] <= 0:
+                return 0.0
+            numerator = abs(log_return(lookback))
+            denominator = sum(abs(math.log(prices[offset] / prices[offset - 1])) for offset in range(index - lookback + 1, index + 1) if prices[offset - 1] > 0)
+            return numerator / denominator if denominator else 0.0
+
+        row["features"].extend((log_return(120), log_return(240), efficiency(60), efficiency(240)))
+
+
 def proxy_score(rows: list[dict[str, Any]], probabilities: list[list[float]], threshold: float) -> tuple[float, int]:
     score = 0.0
     actions = 0
@@ -201,11 +218,18 @@ def main() -> None:
     parser.add_argument("--horizon-minutes", type=int, default=60)
     parser.add_argument("--round-trip-cost-bps", type=float, default=12.0)
     parser.add_argument("--label-margin-bps", type=float, default=2.0)
+    parser.add_argument("--directional-features", action="store_true", help="add causal 120/240-minute returns and trend-efficiency features")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    rows = load_samples(args.samples, load_replay_sequences(args.input))
+    replay_sequences = load_replay_sequences(args.input)
+    rows = load_samples(args.samples, replay_sequences)
+    replay_prices = load_replay_prices(args.input)
+    global FEATURES
+    if args.directional_features:
+        FEATURES = BASE_FEATURES + ("ret_120m", "ret_240m", "efficiency_60m", "efficiency_240m")
+        add_directional_features(rows, replay_prices)
     if args.horizon_minutes != 60 or args.round_trip_cost_bps != 12.0 or args.label_margin_bps != 2.0:
-        relabel(rows, load_replay_prices(args.input), args.horizon_minutes, args.round_trip_cost_bps, args.label_margin_bps)
+        relabel(rows, replay_prices, args.horizon_minutes, args.round_trip_cost_bps, args.label_margin_bps)
     grouped = {split: [row for row in rows if row["split"] == split] for split in SPLITS}
     means, scales = standardizer(grouped["development_train"])
     weights = train(grouped["development_train"], means, scales)
@@ -235,7 +259,7 @@ def main() -> None:
         "schema": "astra.report.btc-tick-baseline-oos.v1",
         "generated_at": datetime.now(UTC).isoformat(),
         "input": {"path": str(args.input), "sha256": sha256(args.input), "samples_path": str(args.samples), "samples_sha256": sha256(args.samples)},
-        "protocol": {"features": FEATURES, "samples": {split: len(grouped[split]) for split in SPLITS}, "train_only_standardization": True, "model": "class-weighted softmax baseline", "label_horizon_minutes": args.horizon_minutes, "label_round_trip_cost_bps": args.round_trip_cost_bps, "label_margin_bps": args.label_margin_bps, "cpp_probability_threshold_ppm": 0},
+        "protocol": {"features": FEATURES, "samples": {split: len(grouped[split]) for split in SPLITS}, "train_only_standardization": True, "model": "class-weighted softmax baseline", "directional_features": args.directional_features, "label_horizon_minutes": args.horizon_minutes, "label_round_trip_cost_bps": args.round_trip_cost_bps, "label_margin_bps": args.label_margin_bps, "cpp_probability_threshold_ppm": 0},
         "calibration": {"selected_threshold": threshold, "candidates": candidates},
         "prediction": {split: prediction_report(grouped[split], probabilities[split], threshold)[0] for split in SPLITS},
         "decision_tapes": tape_paths,
