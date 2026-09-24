@@ -1,0 +1,318 @@
+{
+  "schema": "astra.report.btc-model-oos.v1",
+  "generated_at": "2026-09-24T01:57:49.958990+00:00",
+  "input": {
+    "path": "data/replay/btc-2025-2026.csv",
+    "sha256": "23a0fe0d93fdf448ab10312b776bdb5f5b8b62b7d87820d3d81ac618dd1f2e0e",
+    "rows": 875501,
+    "start_ns": 1735689600000000000,
+    "end_ns": 1788220740000000000
+  },
+  "protocol": {
+    "stride": 60,
+    "horizon": 60,
+    "label_margin": 0.0002,
+    "splits": {
+      "development_train": 4343,
+      "development_validation": 4416,
+      "holdout_2026": 5831
+    }
+  },
+  "features": [
+    "ret_1m",
+    "ret_5m",
+    "ret_15m",
+    "ret_60m",
+    "vol_60m",
+    "flow_imbalance",
+    "spread_bps",
+    "hour_sin",
+    "hour_cos"
+  ],
+  "model": {
+    "type": "standard-library linear softmax",
+    "classes": [
+      "hold",
+      "long",
+      "short"
+    ],
+    "train_label_counts": {
+      "short": 1368,
+      "long": 1456,
+      "hold": 1519
+    }
+  },
+  "artifact": {
+    "feature_means": [
+      4.2469484407749335e-05,
+      -7.336045989548726e-06,
+      -1.3982226131331485e-05,
+      3.0957166305061155e-05,
+      0.0005775379023228575,
+      0.02006502624913654,
+      0.19896464357973304,
+      -1.3404107740799825e-17,
+      -0.00023025558369796066
+    ],
+    "feature_scales": [
+      0.0008401987599469484,
+      0.0013911480886224373,
+      0.002465670706087148,
+      0.005192620537782271,
+      0.00040016072720258406,
+      0.3565661164810807,
+      0.0006113292426344862,
+      0.7072696152200674,
+      0.707106743688784
+    ],
+    "weights": [
+      [
+        0.006038075606398744,
+        0.13957299418819605,
+        0.051926024593810106,
+        0.01568764302523867,
+        -0.5893128458445814,
+        0.018954797513302736,
+        0.05810159132187552,
+        0.1499226294686899,
+        0.05522416000879642,
+        0.10660013657236775
+      ],
+      [
+        0.04875047924387977,
+        -0.035266123363823156,
+        -0.16018208630376066,
+        0.023538333699943223,
+        0.36217666992799435,
+        -0.046647926281074385,
+        0.1779011445059057,
+        -0.06849925250651634,
+        0.06561846869291738,
+        -0.03875325756874644
+      ],
+      [
+        -0.054788554850275804,
+        -0.10430687082437252,
+        0.10825606170995063,
+        -0.03922597672518371,
+        0.2271361759165789,
+        0.02769312876777154,
+        -0.23600273582777886,
+        -0.08142337696217475,
+        -0.1208426287017156,
+        -0.06784687900362199
+      ]
+    ]
+  },
+  "calibration": {
+    "temperature": 1.5,
+    "validation_log_loss": 1.061178,
+    "threshold": 0.65,
+    "threshold_candidates": [
+      {
+        "return_ppm": -64697,
+        "threshold": 0.4,
+        "fills": 855
+      },
+      {
+        "return_ppm": -31223,
+        "threshold": 0.45,
+        "fills": 465
+      },
+      {
+        "return_ppm": -15327,
+        "threshold": 0.5,
+        "fills": 208
+      },
+      {
+        "return_ppm": -4583,
+        "threshold": 0.55,
+        "fills": 109
+      },
+      {
+        "return_ppm": -799,
+        "threshold": 0.6,
+        "fills": 38
+      },
+      {
+        "return_ppm": -109,
+        "threshold": 0.65,
+        "fills": 16
+      },
+      {
+        "return_ppm": -2660,
+        "threshold": 0.7,
+        "fills": 4
+      }
+    ]
+  },
+  "prediction_summary": {
+    "development_train": {
+      "accuracy": 0.353442,
+      "label_counts": {
+        "short": 1368,
+        "long": 1456,
+        "hold": 1519
+      },
+      "action_counts": {
+        "hold": 4302,
+        "long": 37,
+        "short": 4
+      },
+      "log_loss": 1.084112,
+      "brier": 0.655358
+    },
+    "development_validation": {
+      "accuracy": 0.42029,
+      "label_counts": {
+        "long": 1293,
+        "short": 1269,
+        "hold": 1854
+      },
+      "action_counts": {
+        "hold": 4407,
+        "long": 8,
+        "short": 1
+      },
+      "log_loss": 1.061178,
+      "brier": 0.638438
+    },
+    "holdout_2026": {
+      "accuracy": 0.388441,
+      "label_counts": {
+        "long": 1777,
+        "hold": 2254,
+        "short": 1800
+      },
+      "action_counts": {
+        "hold": 5797,
+        "long": 20,
+        "short": 14
+      },
+      "log_loss": 1.076363,
+      "brier": 0.650882
+    }
+  },
+  "evaluation": [
+    {
+      "split": "development_train",
+      "cost_scenario": "base",
+      "samples": 4343,
+      "fills": 64,
+      "return_ppm": -3903,
+      "final_equity_units": 9960969,
+      "max_drawdown_units": 53854,
+      "fees_units": 29301,
+      "gross_profit_units": 122855,
+      "gross_loss_units": 132604,
+      "profit_factor": 0.926,
+      "position_units": 0
+    },
+    {
+      "split": "development_train",
+      "cost_scenario": "stress",
+      "samples": 4343,
+      "fills": 64,
+      "return_ppm": -9171,
+      "final_equity_units": 9908287,
+      "max_drawdown_units": 95597,
+      "fees_units": 58567,
+      "gross_profit_units": 110717,
+      "gross_loss_units": 143874,
+      "profit_factor": 0.77,
+      "position_units": 0
+    },
+    {
+      "split": "development_validation",
+      "cost_scenario": "base",
+      "samples": 4416,
+      "fills": 16,
+      "return_ppm": -109,
+      "final_equity_units": 9998909,
+      "max_drawdown_units": 16515,
+      "fees_units": 7924,
+      "gross_profit_units": 33331,
+      "gross_loss_units": 26502,
+      "profit_factor": 1.258,
+      "position_units": 0
+    },
+    {
+      "split": "development_validation",
+      "cost_scenario": "stress",
+      "samples": 4416,
+      "fills": 16,
+      "return_ppm": -1534,
+      "final_equity_units": 9984665,
+      "max_drawdown_units": 22226,
+      "fees_units": 15838,
+      "gross_profit_units": 30134,
+      "gross_loss_units": 29635,
+      "profit_factor": 1.017,
+      "position_units": 0
+    },
+    {
+      "split": "holdout_2026",
+      "cost_scenario": "base",
+      "samples": 5831,
+      "fills": 60,
+      "return_ppm": -1221,
+      "final_equity_units": 9987793,
+      "max_drawdown_units": 61577,
+      "fees_units": 20833,
+      "gross_profit_units": 102676,
+      "gross_loss_units": 94063,
+      "profit_factor": 1.092,
+      "position_units": 0
+    },
+    {
+      "split": "holdout_2026",
+      "cost_scenario": "stress",
+      "samples": 5831,
+      "fills": 60,
+      "return_ppm": -4965,
+      "final_equity_units": 9950352,
+      "max_drawdown_units": 74528,
+      "fees_units": 41633,
+      "gross_profit_units": 95200,
+      "gross_loss_units": 103228,
+      "profit_factor": 0.922,
+      "position_units": 0
+    }
+  ],
+  "generic_laya_reference": {
+    "development_train": {
+      "return_ppm": 0,
+      "profit_factor": "0.000",
+      "fills": 0,
+      "decisions": 260,
+      "gated_holds": 260,
+      "proposed_actions": {
+        "short": 260
+      }
+    },
+    "development_validation": {
+      "return_ppm": 0,
+      "profit_factor": "0.000",
+      "fills": 0,
+      "decisions": 265,
+      "gated_holds": 265,
+      "proposed_actions": {
+        "short": 265
+      }
+    },
+    "holdout_2026": {
+      "return_ppm": 0,
+      "profit_factor": "0.000",
+      "fills": 0,
+      "decisions": 350,
+      "gated_holds": 350,
+      "proposed_actions": {
+        "short": 350
+      }
+    }
+  },
+  "decision": {
+    "paper_approved": false,
+    "reason": "This is the first BTC-specific OOS experiment; promotion remains manual and the holdout gates are reported above."
+  }
+}

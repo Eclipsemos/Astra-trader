@@ -186,11 +186,13 @@ Exit criteria:
 ## Phase 4: Model Research
 
 - [ ] Select prediction horizons only after measuring the achievable live latency distribution.
-- [ ] Define cost-aware labels based on executable bid/ask prices, not mid-price direction alone.
+- [x] Define cost-aware labels based on executable bid/ask prices, not mid-price direction alone;
+      see `reports/btc_model_oos_validation/`.
 - [x] Use chronological train, validation, and untouched holdout periods.
-- [ ] Compare Laya against logistic regression and a small tree/boosting baseline.
-- [ ] Calibrate action probabilities and require expected edge to exceed fees, spread, slippage, and
-      a configurable safety margin.
+- [x] Compare the frozen Laya checkpoint against a BTC-specific linear softmax/logistic baseline;
+      the tree/boosting extension remains open.
+- [x] Calibrate action probabilities and require the research label to clear fees, spread,
+      slippage, and a configurable safety margin; production expected-edge gating remains open.
 - [ ] Evaluate results by regime, volatility, liquidity, hour, direction, and holding horizon.
 - [ ] Penalize unstable parameter points and prefer broad performance plateaus.
 - [x] Reject the current model/baseline configuration when it does not improve net out-of-sample
