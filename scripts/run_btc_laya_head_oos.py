@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import hashlib
 import json
 import sys
@@ -58,7 +59,7 @@ def sha256(path: Path) -> str:
 
 def state_text(row: dict[str, Any]) -> str:
     values = row["features"]
-    fields = (
+    fields = row.get("feature_names", (
         "ret_1m",
         "ret_5m",
         "ret_15m",
@@ -68,8 +69,34 @@ def state_text(row: dict[str, Any]) -> str:
         "spread_bps",
         "hour_sin",
         "hour_cos",
-    )
+    ))
     return "BTCUSDT state: " + ", ".join(f"{name}={value:.8g}" for name, value in zip(fields, values))
+
+
+def load_external_samples(path: Path, timestamp_to_sequence: dict[int, int]) -> list[dict[str, Any]]:
+    rows = []
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rt", newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        for record in reader:
+            timestamp_ns = int(record["timestamp_ms"]) * 1_000_000
+            stamp = datetime.fromtimestamp(timestamp_ns / 1_000_000_000, UTC)
+            if stamp < datetime(2025, 1, 1, tzinfo=UTC) or stamp >= datetime(2026, 9, 1, tzinfo=UTC):
+                continue
+            split = "development_train" if stamp < datetime(2025, 7, 1, tzinfo=UTC) else "development_validation" if stamp < datetime(2026, 1, 1, tzinfo=UTC) else "holdout_2026"
+            replay_sequence = timestamp_to_sequence.get(timestamp_ns)
+            if replay_sequence is None:
+                continue
+            rows.append({
+                "index": replay_sequence - 1,
+                "replay_sequence": replay_sequence,
+                "timestamp_ns": timestamp_ns,
+                "split": split,
+                "feature_names": ("ret_1m", "ret_5m", "ret_15m", "ret_60m", "vol_60m", "flow_5m", "trades_5m", "spread_proxy"),
+                "features": [float(record[name]) for name in ("ret_1m", "ret_5m", "ret_15m", "ret_60m", "vol_60m", "flow_5m", "trades_5m", "spread_proxy")],
+                "label": int(record["label"]),
+            })
+    return rows
 
 
 def make_item(agent: Any, row: dict[str, Any]) -> dict[str, Any]:
@@ -178,7 +205,7 @@ def write_tape(path: Path, rows: list[dict[str, Any]], logits: list[list[float]]
             action = ACTION_NAMES[direction] if prediction[direction] >= threshold else "hold"
             writer.writerow(
                 (
-                    int(row["index"]) + 1,
+                    int(row.get("replay_sequence") or row["index"] + 1),
                     action,
                     round(prediction[1] * 1_000_000),
                     round(prediction[2] * 1_000_000),
@@ -209,6 +236,7 @@ def evaluate(rows: list[dict[str, Any]], logits: list[list[float]], temperature:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=Path("data/replay/btc-2025-2026.csv"))
+    parser.add_argument("--samples-input", type=Path, default=None, help="optional gzip CSV from build_btc_laya_tick_samples.py")
     parser.add_argument("--laya-root", type=Path, default=Path("/home/ldtdev/qt/mmAstra/laya"))
     parser.add_argument("--output-dir", type=Path, default=Path("reports/btc_laya_head_oos"))
     parser.add_argument("--stride", type=int, default=60)
@@ -227,7 +255,11 @@ def main() -> None:
     from laya import Agent
 
     data = load_csv(args.input)
-    samples = build_samples(*data, args.stride, args.horizon, 0.0002)
+    if args.samples_input:
+        timestamp_to_sequence = {int(timestamp): index + 1 for index, timestamp in enumerate(data[0])}
+        samples = load_external_samples(args.samples_input, timestamp_to_sequence)
+    else:
+        samples = build_samples(*data, args.stride, args.horizon, 0.0002)
     grouped = {name: [row for row in samples if row["split"] == name] for name in SPLITS}
     if args.max_samples:
         grouped = {name: rows[: args.max_samples] for name, rows in grouped.items()}
@@ -261,6 +293,7 @@ def main() -> None:
         "schema": "astra.report.btc-laya-head-oos.v1",
         "generated_at": datetime.now(UTC).isoformat(),
         "input": {"path": str(args.input), "sha256": sha256(args.input), "rows": len(data[0])},
+        "samples_input": ({"path": str(args.samples_input), "sha256": sha256(args.samples_input), "raw_derived": True} if args.samples_input else None),
         "protocol": {"stride": args.stride, "horizon": args.horizon, "epochs": args.epochs, "batch_size": args.batch_size, "device": str(agent.device), "gpu": torch.cuda.get_device_name(agent.device) if agent.device.type == "cuda" else None, "encoder_frozen": True, "trained_component": "model.scorer", "train_samples_used": len(train_rows), "samples": {name: len(rows) for name, rows in grouped.items()}},
         "calibration": {"temperature": temperature, "threshold": threshold, "threshold_candidates": [{"return_ppm": value, "threshold": candidate, "fills": fills} for value, candidate, fills in candidate_thresholds], "base_temperature": base_temperature},
         "generic_laya_frozen": base,
@@ -301,7 +334,8 @@ def markdown(report: dict[str, Any]) -> str:
         "",
         "## Protocol",
         "",
-        f"- Input: `{report['input']['path']}`; `{report['input']['rows']:,}` one-minute events.",
+        f"- C++ replay input: `{report['input']['path']}`; `{report['input']['rows']:,}` one-minute events.",
+        (f"- Model samples: `{report['protocol']['samples']}` from raw aggregate-trade feature cache `{report['samples_input']['path']}` (SHA-256 `{report['samples_input']['sha256']}`)." if report.get("samples_input") else "- Model samples were built from the replay input."),
         f"- Samples: stride `{report['protocol']['stride']}` minutes, forward horizon `{report['protocol']['horizon']}` minutes.",
         f"- Training device: `{report['protocol']['device']}` (`{report['protocol']['gpu'] or 'CPU'}`).",
         f"- Train/validation/holdout samples: `{report['protocol']['samples']}`.",
@@ -312,7 +346,7 @@ def markdown(report: dict[str, Any]) -> str:
         "## Decision",
         "",
         "This is not a paper approval. The adapted checkpoint must pass rolling OOS, cost stress, and uncertainty gates before the C++ gateway can load it.",
-        "The current run uses the existing minute cache derived from aggregate trades; the raw ZIP audit is recorded separately before the next tick-level dataset build.",
+        "When raw-derived samples are used, any sample timestamps after the C++ replay coverage are retained in the manifest but excluded from comparable execution metrics.",
         "",
         "Generated by `scripts/run_btc_laya_head_oos.py`.",
         "",

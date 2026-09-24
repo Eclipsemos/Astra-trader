@@ -1,0 +1,23 @@
+{
+  "schema": "astra.manifest.btc-laya-tick-samples.v1",
+  "generated_at": "2026-09-24T06:58:26.019122+00:00",
+  "input": {
+    "path": "/home/ldtdev/qt/mmtick/data/order_flow_cache/btc-5s-aggtrade-v1.csv.gz",
+    "sha256": "6fc2815926b368201250f08365250589416521b951197c9cbbc35fc4d563976f",
+    "one_minute_bars": 1422686
+  },
+  "output": {
+    "path": "/home/ldtdev/qt/mmtick/data/order_flow_cache/btc-laya-1m-samples-v1.csv.gz",
+    "sha256": "54dbfcd8a2fdcad4d49b23a801d66d85000833d7bf0de76cf2564fb66e14a333",
+    "bytes": 1175026,
+    "samples": 14927,
+    "split_samples": {
+      "development_train": 4344,
+      "development_validation": 4416,
+      "holdout_2026": 6167
+    },
+    "horizon_minutes": 60
+  },
+  "label": "future close executable-cost proxy: 12 bps round trip plus 2 bps safety margin",
+  "paper_approved": false
+}
