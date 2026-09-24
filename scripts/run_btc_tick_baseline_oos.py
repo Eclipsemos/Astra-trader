@@ -48,6 +48,14 @@ def load_replay_sequences(path: Path) -> dict[int, int]:
     return mapping
 
 
+def load_replay_prices(path: Path) -> list[float]:
+    prices: list[float] = []
+    with path.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            prices.append((int(row["best_bid_units"]) + int(row["best_ask_units"])) / 2)
+    return prices
+
+
 def sample_split(timestamp_ms: int) -> str | None:
     stamp = datetime.fromtimestamp(timestamp_ms / 1000, UTC)
     if datetime(2025, 1, 1, tzinfo=UTC) <= stamp < SPLIT_ENDS["development_train"]:
@@ -126,6 +134,21 @@ def action_for(probability: list[float], threshold: float) -> int:
     return direction if probability[direction] >= threshold else 0
 
 
+def relabel(rows: list[dict[str, Any]], prices: list[float], horizon: int, round_trip_cost_bps: float, margin_bps: float) -> None:
+    cost = round_trip_cost_bps / 10_000
+    margin = margin_bps / 10_000
+    for row in rows:
+        index = int(row["sequence"]) - 1
+        if index + horizon >= len(prices):
+            row["label"] = 0
+            continue
+        current = prices[index]
+        future = prices[index + horizon]
+        long_edge = future / current - 1.0 - cost
+        short_edge = current / future - 1.0 - cost
+        row["label"] = 1 if long_edge > margin and long_edge >= short_edge else 2 if short_edge > margin else 0
+
+
 def proxy_score(rows: list[dict[str, Any]], probabilities: list[list[float]], threshold: float) -> tuple[float, int]:
     score = 0.0
     actions = 0
@@ -175,9 +198,14 @@ def main() -> None:
     parser.add_argument("--input", type=Path, default=Path("data/replay/btc-2025-2026.csv"))
     parser.add_argument("--binary", type=Path, default=Path("build/dev/astra_replay"))
     parser.add_argument("--output-dir", type=Path, default=Path("reports/btc_tick_baseline_oos"))
+    parser.add_argument("--horizon-minutes", type=int, default=60)
+    parser.add_argument("--round-trip-cost-bps", type=float, default=12.0)
+    parser.add_argument("--label-margin-bps", type=float, default=2.0)
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     rows = load_samples(args.samples, load_replay_sequences(args.input))
+    if args.horizon_minutes != 60 or args.round_trip_cost_bps != 12.0 or args.label_margin_bps != 2.0:
+        relabel(rows, load_replay_prices(args.input), args.horizon_minutes, args.round_trip_cost_bps, args.label_margin_bps)
     grouped = {split: [row for row in rows if row["split"] == split] for split in SPLITS}
     means, scales = standardizer(grouped["development_train"])
     weights = train(grouped["development_train"], means, scales)
@@ -207,7 +235,7 @@ def main() -> None:
         "schema": "astra.report.btc-tick-baseline-oos.v1",
         "generated_at": datetime.now(UTC).isoformat(),
         "input": {"path": str(args.input), "sha256": sha256(args.input), "samples_path": str(args.samples), "samples_sha256": sha256(args.samples)},
-        "protocol": {"features": FEATURES, "samples": {split: len(grouped[split]) for split in SPLITS}, "train_only_standardization": True, "model": "class-weighted softmax baseline", "cpp_probability_threshold_ppm": 0},
+        "protocol": {"features": FEATURES, "samples": {split: len(grouped[split]) for split in SPLITS}, "train_only_standardization": True, "model": "class-weighted softmax baseline", "label_horizon_minutes": args.horizon_minutes, "label_round_trip_cost_bps": args.round_trip_cost_bps, "label_margin_bps": args.label_margin_bps, "cpp_probability_threshold_ppm": 0},
         "calibration": {"selected_threshold": threshold, "candidates": candidates},
         "prediction": {split: prediction_report(grouped[split], probabilities[split], threshold)[0] for split in SPLITS},
         "decision_tapes": tape_paths,

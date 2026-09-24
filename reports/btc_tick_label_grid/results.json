@@ -1,0 +1,1576 @@
+{
+  "schema": "astra.report.btc-tick-label-grid.v1",
+  "generated_at": "2026-09-24T08:32:54.589186+00:00",
+  "input": {
+    "replay_path": "data/replay/btc-2025-2026.csv",
+    "replay_sha256": "23a0fe0d93fdf448ab10312b776bdb5f5b8b62b7d87820d3d81ac618dd1f2e0e",
+    "samples_path": "/home/ldtdev/qt/mmtick/data/order_flow_cache/btc-laya-1m-samples-v1.csv.gz",
+    "samples_sha256": "54dbfcd8a2fdcad4d49b23a801d66d85000833d7bf0de76cf2564fb66e14a333"
+  },
+  "sample_counts": {
+    "development_train": 4344,
+    "development_validation": 4416,
+    "holdout_2026": 5832
+  },
+  "feature_effects_train_at_60m": {
+    "ret_1m": {
+      "train_mean": 1.58701e-05,
+      "train_std": 0.0007353111,
+      "long_minus_short_std": 0.007146,
+      "long_minus_hold_std": -0.013246,
+      "short_minus_hold_std": -0.020393
+    },
+    "ret_5m": {
+      "train_mean": 1.50237e-05,
+      "train_std": 0.0014305877,
+      "long_minus_short_std": -0.032457,
+      "long_minus_hold_std": 0.016201,
+      "short_minus_hold_std": 0.048658
+    },
+    "ret_15m": {
+      "train_mean": 5.85496e-05,
+      "train_std": 0.0025283842,
+      "long_minus_short_std": -0.084452,
+      "long_minus_hold_std": -0.043389,
+      "short_minus_hold_std": 0.041063
+    },
+    "ret_60m": {
+      "train_mean": 3.08639e-05,
+      "train_std": 0.0050643169,
+      "long_minus_short_std": -0.02068,
+      "long_minus_hold_std": -0.046475,
+      "short_minus_hold_std": -0.025795
+    },
+    "vol_60m": {
+      "train_mean": 0.0005770352,
+      "train_std": 0.0004011908,
+      "long_minus_short_std": 0.020429,
+      "long_minus_hold_std": 0.599468,
+      "short_minus_hold_std": 0.579039
+    },
+    "flow_5m": {
+      "train_mean": -0.0105601422,
+      "train_std": 0.2014789745,
+      "long_minus_short_std": -0.032834,
+      "long_minus_hold_std": 0.007202,
+      "short_minus_hold_std": 0.040036
+    },
+    "trades_5m": {
+      "train_mean": 5073.3825966851,
+      "train_std": 6649.8887428231,
+      "long_minus_short_std": -0.061789,
+      "long_minus_hold_std": 0.429211,
+      "short_minus_hold_std": 0.491
+    },
+    "spread_proxy": {
+      "train_mean": 0.0008142965,
+      "train_std": 0.0008165288,
+      "long_minus_short_std": -0.039157,
+      "long_minus_hold_std": 0.445116,
+      "short_minus_hold_std": 0.484273
+    }
+  },
+  "grid": [
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 2779,
+          "long": 771,
+          "short": 794,
+          "directional_fraction": 0.360267
+        },
+        "development_validation": {
+          "hold": 3170,
+          "long": 626,
+          "short": 620,
+          "directional_fraction": 0.282156
+        },
+        "holdout_2026": {
+          "hold": 4075,
+          "long": 894,
+          "short": 863,
+          "directional_fraction": 0.301269
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 2982,
+          "long": 677,
+          "short": 685,
+          "directional_fraction": 0.313536
+        },
+        "development_validation": {
+          "hold": 3338,
+          "long": 557,
+          "short": 521,
+          "directional_fraction": 0.244112
+        },
+        "holdout_2026": {
+          "hold": 4302,
+          "long": 782,
+          "short": 748,
+          "directional_fraction": 0.262346
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 3224,
+          "long": 560,
+          "short": 560,
+          "directional_fraction": 0.257827
+        },
+        "development_validation": {
+          "hold": 3560,
+          "long": 448,
+          "short": 408,
+          "directional_fraction": 0.193841
+        },
+        "holdout_2026": {
+          "hold": 4599,
+          "long": 631,
+          "short": 602,
+          "directional_fraction": 0.21142
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 3421,
+          "long": 459,
+          "short": 464,
+          "directional_fraction": 0.212477
+        },
+        "development_validation": {
+          "hold": 3720,
+          "long": 367,
+          "short": 329,
+          "directional_fraction": 0.157609
+        },
+        "holdout_2026": {
+          "hold": 4823,
+          "long": 511,
+          "short": 498,
+          "directional_fraction": 0.173011
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 3537,
+          "long": 401,
+          "short": 406,
+          "directional_fraction": 0.185773
+        },
+        "development_validation": {
+          "hold": 3803,
+          "long": 321,
+          "short": 292,
+          "directional_fraction": 0.138813
+        },
+        "holdout_2026": {
+          "hold": 4941,
+          "long": 443,
+          "short": 448,
+          "directional_fraction": 0.152778
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 3688,
+          "long": 332,
+          "short": 324,
+          "directional_fraction": 0.151013
+        },
+        "development_validation": {
+          "hold": 3914,
+          "long": 257,
+          "short": 245,
+          "directional_fraction": 0.113678
+        },
+        "holdout_2026": {
+          "hold": 5059,
+          "long": 388,
+          "short": 385,
+          "directional_fraction": 0.132545
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 3998,
+          "long": 163,
+          "short": 183,
+          "directional_fraction": 0.07965
+        },
+        "development_validation": {
+          "hold": 4166,
+          "long": 128,
+          "short": 122,
+          "directional_fraction": 0.056612
+        },
+        "holdout_2026": {
+          "hold": 5390,
+          "long": 216,
+          "short": 226,
+          "directional_fraction": 0.075789
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 4037,
+          "long": 145,
+          "short": 162,
+          "directional_fraction": 0.070672
+        },
+        "development_validation": {
+          "hold": 4201,
+          "long": 114,
+          "short": 101,
+          "directional_fraction": 0.048687
+        },
+        "holdout_2026": {
+          "hold": 5422,
+          "long": 200,
+          "short": 210,
+          "directional_fraction": 0.070302
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 4085,
+          "long": 126,
+          "short": 133,
+          "directional_fraction": 0.059622
+        },
+        "development_validation": {
+          "hold": 4223,
+          "long": 104,
+          "short": 89,
+          "directional_fraction": 0.043705
+        },
+        "holdout_2026": {
+          "hold": 5477,
+          "long": 169,
+          "short": 186,
+          "directional_fraction": 0.060871
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 4216,
+          "long": 65,
+          "short": 63,
+          "directional_fraction": 0.029466
+        },
+        "development_validation": {
+          "hold": 4319,
+          "long": 55,
+          "short": 42,
+          "directional_fraction": 0.021966
+        },
+        "holdout_2026": {
+          "hold": 5636,
+          "long": 90,
+          "short": 106,
+          "directional_fraction": 0.033608
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 4223,
+          "long": 64,
+          "short": 57,
+          "directional_fraction": 0.027855
+        },
+        "development_validation": {
+          "hold": 4331,
+          "long": 49,
+          "short": 36,
+          "directional_fraction": 0.019248
+        },
+        "holdout_2026": {
+          "hold": 5651,
+          "long": 84,
+          "short": 97,
+          "directional_fraction": 0.031036
+        }
+      }
+    },
+    {
+      "horizon_minutes": 15,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 4237,
+          "long": 58,
+          "short": 49,
+          "directional_fraction": 0.024632
+        },
+        "development_validation": {
+          "hold": 4341,
+          "long": 43,
+          "short": 32,
+          "directional_fraction": 0.016984
+        },
+        "holdout_2026": {
+          "hold": 5671,
+          "long": 77,
+          "short": 84,
+          "directional_fraction": 0.027606
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 2202,
+          "long": 1065,
+          "short": 1077,
+          "directional_fraction": 0.493094
+        },
+        "development_validation": {
+          "hold": 2625,
+          "long": 904,
+          "short": 887,
+          "directional_fraction": 0.405571
+        },
+        "holdout_2026": {
+          "hold": 3280,
+          "long": 1263,
+          "short": 1288,
+          "directional_fraction": 0.437489
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 2430,
+          "long": 958,
+          "short": 956,
+          "directional_fraction": 0.440608
+        },
+        "development_validation": {
+          "hold": 2812,
+          "long": 819,
+          "short": 785,
+          "directional_fraction": 0.363225
+        },
+        "holdout_2026": {
+          "hold": 3535,
+          "long": 1144,
+          "short": 1152,
+          "directional_fraction": 0.393758
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 2691,
+          "long": 828,
+          "short": 825,
+          "directional_fraction": 0.380525
+        },
+        "development_validation": {
+          "hold": 3034,
+          "long": 709,
+          "short": 673,
+          "directional_fraction": 0.312953
+        },
+        "holdout_2026": {
+          "hold": 3875,
+          "long": 985,
+          "short": 971,
+          "directional_fraction": 0.335448
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 2914,
+          "long": 717,
+          "short": 713,
+          "directional_fraction": 0.32919
+        },
+        "development_validation": {
+          "hold": 3246,
+          "long": 596,
+          "short": 574,
+          "directional_fraction": 0.264946
+        },
+        "holdout_2026": {
+          "hold": 4147,
+          "long": 846,
+          "short": 838,
+          "directional_fraction": 0.288801
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 3041,
+          "long": 658,
+          "short": 645,
+          "directional_fraction": 0.299954
+        },
+        "development_validation": {
+          "hold": 3359,
+          "long": 541,
+          "short": 516,
+          "directional_fraction": 0.239357
+        },
+        "holdout_2026": {
+          "hold": 4317,
+          "long": 757,
+          "short": 757,
+          "directional_fraction": 0.259647
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 3232,
+          "long": 563,
+          "short": 549,
+          "directional_fraction": 0.255985
+        },
+        "development_validation": {
+          "hold": 3517,
+          "long": 461,
+          "short": 438,
+          "directional_fraction": 0.203578
+        },
+        "holdout_2026": {
+          "hold": 4520,
+          "long": 647,
+          "short": 664,
+          "directional_fraction": 0.224833
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 3654,
+          "long": 344,
+          "short": 346,
+          "directional_fraction": 0.15884
+        },
+        "development_validation": {
+          "hold": 3915,
+          "long": 247,
+          "short": 254,
+          "directional_fraction": 0.113451
+        },
+        "holdout_2026": {
+          "hold": 5033,
+          "long": 401,
+          "short": 397,
+          "directional_fraction": 0.136855
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 3698,
+          "long": 322,
+          "short": 324,
+          "directional_fraction": 0.148711
+        },
+        "development_validation": {
+          "hold": 3963,
+          "long": 219,
+          "short": 234,
+          "directional_fraction": 0.102582
+        },
+        "holdout_2026": {
+          "hold": 5097,
+          "long": 364,
+          "short": 370,
+          "directional_fraction": 0.125879
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 3767,
+          "long": 288,
+          "short": 289,
+          "directional_fraction": 0.132827
+        },
+        "development_validation": {
+          "hold": 4019,
+          "long": 191,
+          "short": 206,
+          "directional_fraction": 0.0899
+        },
+        "holdout_2026": {
+          "hold": 5198,
+          "long": 307,
+          "short": 326,
+          "directional_fraction": 0.108558
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 4006,
+          "long": 166,
+          "short": 172,
+          "directional_fraction": 0.077808
+        },
+        "development_validation": {
+          "hold": 4206,
+          "long": 91,
+          "short": 119,
+          "directional_fraction": 0.047554
+        },
+        "holdout_2026": {
+          "hold": 5480,
+          "long": 164,
+          "short": 187,
+          "directional_fraction": 0.060196
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 4030,
+          "long": 153,
+          "short": 161,
+          "directional_fraction": 0.072284
+        },
+        "development_validation": {
+          "hold": 4223,
+          "long": 80,
+          "short": 113,
+          "directional_fraction": 0.043705
+        },
+        "holdout_2026": {
+          "hold": 5515,
+          "long": 150,
+          "short": 166,
+          "directional_fraction": 0.054193
+        }
+      }
+    },
+    {
+      "horizon_minutes": 30,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 4066,
+          "long": 137,
+          "short": 141,
+          "directional_fraction": 0.063996
+        },
+        "development_validation": {
+          "hold": 4239,
+          "long": 74,
+          "short": 103,
+          "directional_fraction": 0.040082
+        },
+        "holdout_2026": {
+          "hold": 5551,
+          "long": 133,
+          "short": 147,
+          "directional_fraction": 0.048019
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 1746,
+          "long": 1331,
+          "short": 1267,
+          "directional_fraction": 0.598066
+        },
+        "development_validation": {
+          "hold": 2030,
+          "long": 1204,
+          "short": 1182,
+          "directional_fraction": 0.540308
+        },
+        "holdout_2026": {
+          "hold": 2517,
+          "long": 1636,
+          "short": 1678,
+          "directional_fraction": 0.568342
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 1934,
+          "long": 1235,
+          "short": 1175,
+          "directional_fraction": 0.554788
+        },
+        "development_validation": {
+          "hold": 2213,
+          "long": 1104,
+          "short": 1099,
+          "directional_fraction": 0.498868
+        },
+        "holdout_2026": {
+          "hold": 2742,
+          "long": 1526,
+          "short": 1563,
+          "directional_fraction": 0.529755
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 2180,
+          "long": 1110,
+          "short": 1054,
+          "directional_fraction": 0.498158
+        },
+        "development_validation": {
+          "hold": 2470,
+          "long": 975,
+          "short": 971,
+          "directional_fraction": 0.44067
+        },
+        "holdout_2026": {
+          "hold": 3063,
+          "long": 1362,
+          "short": 1406,
+          "directional_fraction": 0.474704
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 2419,
+          "long": 982,
+          "short": 943,
+          "directional_fraction": 0.44314
+        },
+        "development_validation": {
+          "hold": 2684,
+          "long": 875,
+          "short": 857,
+          "directional_fraction": 0.39221
+        },
+        "holdout_2026": {
+          "hold": 3338,
+          "long": 1215,
+          "short": 1278,
+          "directional_fraction": 0.427542
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 2545,
+          "long": 916,
+          "short": 883,
+          "directional_fraction": 0.414134
+        },
+        "development_validation": {
+          "hold": 2827,
+          "long": 805,
+          "short": 784,
+          "directional_fraction": 0.359828
+        },
+        "holdout_2026": {
+          "hold": 3504,
+          "long": 1123,
+          "short": 1204,
+          "directional_fraction": 0.399074
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 2740,
+          "long": 813,
+          "short": 791,
+          "directional_fraction": 0.369245
+        },
+        "development_validation": {
+          "hold": 3023,
+          "long": 699,
+          "short": 694,
+          "directional_fraction": 0.315444
+        },
+        "holdout_2026": {
+          "hold": 3750,
+          "long": 1018,
+          "short": 1063,
+          "directional_fraction": 0.356886
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 3234,
+          "long": 552,
+          "short": 558,
+          "directional_fraction": 0.255525
+        },
+        "development_validation": {
+          "hold": 3513,
+          "long": 455,
+          "short": 448,
+          "directional_fraction": 0.204484
+        },
+        "holdout_2026": {
+          "hold": 4419,
+          "long": 703,
+          "short": 709,
+          "directional_fraction": 0.242154
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 3307,
+          "long": 512,
+          "short": 525,
+          "directional_fraction": 0.23872
+        },
+        "development_validation": {
+          "hold": 3570,
+          "long": 429,
+          "short": 417,
+          "directional_fraction": 0.191576
+        },
+        "holdout_2026": {
+          "hold": 4493,
+          "long": 669,
+          "short": 669,
+          "directional_fraction": 0.229463
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 3401,
+          "long": 467,
+          "short": 476,
+          "directional_fraction": 0.217081
+        },
+        "development_validation": {
+          "hold": 3653,
+          "long": 382,
+          "short": 381,
+          "directional_fraction": 0.172781
+        },
+        "holdout_2026": {
+          "hold": 4631,
+          "long": 609,
+          "short": 591,
+          "directional_fraction": 0.205797
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 3761,
+          "long": 280,
+          "short": 303,
+          "directional_fraction": 0.134208
+        },
+        "development_validation": {
+          "hold": 3975,
+          "long": 218,
+          "short": 223,
+          "directional_fraction": 0.099864
+        },
+        "holdout_2026": {
+          "hold": 5091,
+          "long": 370,
+          "short": 370,
+          "directional_fraction": 0.126908
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 3789,
+          "long": 267,
+          "short": 288,
+          "directional_fraction": 0.127762
+        },
+        "development_validation": {
+          "hold": 4001,
+          "long": 203,
+          "short": 212,
+          "directional_fraction": 0.093976
+        },
+        "holdout_2026": {
+          "hold": 5129,
+          "long": 348,
+          "short": 354,
+          "directional_fraction": 0.120391
+        }
+      }
+    },
+    {
+      "horizon_minutes": 60,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 3834,
+          "long": 246,
+          "short": 264,
+          "directional_fraction": 0.117403
+        },
+        "development_validation": {
+          "hold": 4042,
+          "long": 179,
+          "short": 195,
+          "directional_fraction": 0.084692
+        },
+        "holdout_2026": {
+          "hold": 5188,
+          "long": 319,
+          "short": 324,
+          "directional_fraction": 0.110273
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 1305,
+          "long": 1568,
+          "short": 1471,
+          "directional_fraction": 0.699586
+        },
+        "development_validation": {
+          "hold": 1591,
+          "long": 1440,
+          "short": 1385,
+          "directional_fraction": 0.639719
+        },
+        "holdout_2026": {
+          "hold": 1908,
+          "long": 1947,
+          "short": 1975,
+          "directional_fraction": 0.672727
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 1439,
+          "long": 1501,
+          "short": 1404,
+          "directional_fraction": 0.668738
+        },
+        "development_validation": {
+          "hold": 1725,
+          "long": 1374,
+          "short": 1317,
+          "directional_fraction": 0.609375
+        },
+        "holdout_2026": {
+          "hold": 2099,
+          "long": 1853,
+          "short": 1878,
+          "directional_fraction": 0.639966
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 1642,
+          "long": 1397,
+          "short": 1305,
+          "directional_fraction": 0.622007
+        },
+        "development_validation": {
+          "hold": 1960,
+          "long": 1245,
+          "short": 1211,
+          "directional_fraction": 0.556159
+        },
+        "holdout_2026": {
+          "hold": 2374,
+          "long": 1724,
+          "short": 1732,
+          "directional_fraction": 0.592796
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 1818,
+          "long": 1312,
+          "short": 1214,
+          "directional_fraction": 0.581492
+        },
+        "development_validation": {
+          "hold": 2161,
+          "long": 1138,
+          "short": 1117,
+          "directional_fraction": 0.510643
+        },
+        "holdout_2026": {
+          "hold": 2611,
+          "long": 1600,
+          "short": 1619,
+          "directional_fraction": 0.552144
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 1926,
+          "long": 1253,
+          "short": 1165,
+          "directional_fraction": 0.55663
+        },
+        "development_validation": {
+          "hold": 2278,
+          "long": 1072,
+          "short": 1066,
+          "directional_fraction": 0.484149
+        },
+        "holdout_2026": {
+          "hold": 2768,
+          "long": 1522,
+          "short": 1540,
+          "directional_fraction": 0.525214
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 2084,
+          "long": 1177,
+          "short": 1083,
+          "directional_fraction": 0.520258
+        },
+        "development_validation": {
+          "hold": 2460,
+          "long": 979,
+          "short": 977,
+          "directional_fraction": 0.442935
+        },
+        "holdout_2026": {
+          "hold": 3000,
+          "long": 1397,
+          "short": 1433,
+          "directional_fraction": 0.48542
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 2627,
+          "long": 888,
+          "short": 829,
+          "directional_fraction": 0.395258
+        },
+        "development_validation": {
+          "hold": 2967,
+          "long": 725,
+          "short": 724,
+          "directional_fraction": 0.328125
+        },
+        "holdout_2026": {
+          "hold": 3667,
+          "long": 1061,
+          "short": 1102,
+          "directional_fraction": 0.371012
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 2702,
+          "long": 847,
+          "short": 795,
+          "directional_fraction": 0.377993
+        },
+        "development_validation": {
+          "hold": 3056,
+          "long": 680,
+          "short": 680,
+          "directional_fraction": 0.307971
+        },
+        "holdout_2026": {
+          "hold": 3780,
+          "long": 1004,
+          "short": 1046,
+          "directional_fraction": 0.35163
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 2820,
+          "long": 783,
+          "short": 741,
+          "directional_fraction": 0.350829
+        },
+        "development_validation": {
+          "hold": 3189,
+          "long": 598,
+          "short": 629,
+          "directional_fraction": 0.277853
+        },
+        "holdout_2026": {
+          "hold": 3932,
+          "long": 923,
+          "short": 975,
+          "directional_fraction": 0.325557
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 3293,
+          "long": 527,
+          "short": 524,
+          "directional_fraction": 0.241943
+        },
+        "development_validation": {
+          "hold": 3591,
+          "long": 403,
+          "short": 422,
+          "directional_fraction": 0.186821
+        },
+        "holdout_2026": {
+          "hold": 4477,
+          "long": 658,
+          "short": 695,
+          "directional_fraction": 0.232075
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 3335,
+          "long": 507,
+          "short": 502,
+          "directional_fraction": 0.232274
+        },
+        "development_validation": {
+          "hold": 3620,
+          "long": 387,
+          "short": 409,
+          "directional_fraction": 0.180254
+        },
+        "holdout_2026": {
+          "hold": 4540,
+          "long": 620,
+          "short": 670,
+          "directional_fraction": 0.221269
+        }
+      }
+    },
+    {
+      "horizon_minutes": 120,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 3402,
+          "long": 476,
+          "short": 466,
+          "directional_fraction": 0.216851
+        },
+        "development_validation": {
+          "hold": 3683,
+          "long": 355,
+          "short": 378,
+          "directional_fraction": 0.165987
+        },
+        "holdout_2026": {
+          "hold": 4615,
+          "long": 586,
+          "short": 629,
+          "directional_fraction": 0.208405
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 894,
+          "long": 1791,
+          "short": 1659,
+          "directional_fraction": 0.794199
+        },
+        "development_validation": {
+          "hold": 1158,
+          "long": 1657,
+          "short": 1601,
+          "directional_fraction": 0.737772
+        },
+        "holdout_2026": {
+          "hold": 1424,
+          "long": 2192,
+          "short": 2212,
+          "directional_fraction": 0.755662
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 998,
+          "long": 1744,
+          "short": 1602,
+          "directional_fraction": 0.770258
+        },
+        "development_validation": {
+          "hold": 1296,
+          "long": 1596,
+          "short": 1524,
+          "directional_fraction": 0.706522
+        },
+        "holdout_2026": {
+          "hold": 1567,
+          "long": 2125,
+          "short": 2136,
+          "directional_fraction": 0.731126
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 8,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 1139,
+          "long": 1680,
+          "short": 1525,
+          "directional_fraction": 0.737799
+        },
+        "development_validation": {
+          "hold": 1477,
+          "long": 1499,
+          "short": 1440,
+          "directional_fraction": 0.665534
+        },
+        "holdout_2026": {
+          "hold": 1795,
+          "long": 2020,
+          "short": 2013,
+          "directional_fraction": 0.692004
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 1318,
+          "long": 1592,
+          "short": 1434,
+          "directional_fraction": 0.696593
+        },
+        "development_validation": {
+          "hold": 1639,
+          "long": 1414,
+          "short": 1363,
+          "directional_fraction": 0.62885
+        },
+        "holdout_2026": {
+          "hold": 2014,
+          "long": 1906,
+          "short": 1908,
+          "directional_fraction": 0.654427
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 1415,
+          "long": 1545,
+          "short": 1384,
+          "directional_fraction": 0.674263
+        },
+        "development_validation": {
+          "hold": 1746,
+          "long": 1361,
+          "short": 1309,
+          "directional_fraction": 0.60462
+        },
+        "holdout_2026": {
+          "hold": 2151,
+          "long": 1831,
+          "short": 1846,
+          "directional_fraction": 0.63092
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 12,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 1550,
+          "long": 1474,
+          "short": 1320,
+          "directional_fraction": 0.643186
+        },
+        "development_validation": {
+          "hold": 1904,
+          "long": 1282,
+          "short": 1230,
+          "directional_fraction": 0.568841
+        },
+        "holdout_2026": {
+          "hold": 2311,
+          "long": 1749,
+          "short": 1768,
+          "directional_fraction": 0.603466
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 2002,
+          "long": 1235,
+          "short": 1107,
+          "directional_fraction": 0.539134
+        },
+        "development_validation": {
+          "hold": 2414,
+          "long": 1024,
+          "short": 978,
+          "directional_fraction": 0.453351
+        },
+        "holdout_2026": {
+          "hold": 2889,
+          "long": 1453,
+          "short": 1486,
+          "directional_fraction": 0.50429
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 2079,
+          "long": 1195,
+          "short": 1070,
+          "directional_fraction": 0.521409
+        },
+        "development_validation": {
+          "hold": 2494,
+          "long": 984,
+          "short": 938,
+          "directional_fraction": 0.435236
+        },
+        "holdout_2026": {
+          "hold": 2983,
+          "long": 1407,
+          "short": 1438,
+          "directional_fraction": 0.488161
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 20,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 2188,
+          "long": 1139,
+          "short": 1017,
+          "directional_fraction": 0.496317
+        },
+        "development_validation": {
+          "hold": 2596,
+          "long": 924,
+          "short": 896,
+          "directional_fraction": 0.412138
+        },
+        "holdout_2026": {
+          "hold": 3138,
+          "long": 1334,
+          "short": 1356,
+          "directional_fraction": 0.461565
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 0,
+      "splits": {
+        "development_train": {
+          "hold": 2683,
+          "long": 872,
+          "short": 789,
+          "directional_fraction": 0.382366
+        },
+        "development_validation": {
+          "hold": 3040,
+          "long": 689,
+          "short": 687,
+          "directional_fraction": 0.311594
+        },
+        "holdout_2026": {
+          "hold": 3730,
+          "long": 1041,
+          "short": 1057,
+          "directional_fraction": 0.359986
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 2,
+      "splits": {
+        "development_train": {
+          "hold": 2748,
+          "long": 838,
+          "short": 758,
+          "directional_fraction": 0.367403
+        },
+        "development_validation": {
+          "hold": 3102,
+          "long": 649,
+          "short": 665,
+          "directional_fraction": 0.297554
+        },
+        "holdout_2026": {
+          "hold": 3802,
+          "long": 1005,
+          "short": 1021,
+          "directional_fraction": 0.347632
+        }
+      }
+    },
+    {
+      "horizon_minutes": 240,
+      "round_trip_cost_bps": 30,
+      "margin_bps": 5,
+      "splits": {
+        "development_train": {
+          "hold": 2833,
+          "long": 790,
+          "short": 721,
+          "directional_fraction": 0.347836
+        },
+        "development_validation": {
+          "hold": 3173,
+          "long": 615,
+          "short": 628,
+          "directional_fraction": 0.281476
+        },
+        "holdout_2026": {
+          "hold": 3902,
+          "long": 952,
+          "short": 974,
+          "directional_fraction": 0.330474
+        }
+      }
+    }
+  ],
+  "decision": "diagnostic only; no parameter set is paper-approved"
+}
