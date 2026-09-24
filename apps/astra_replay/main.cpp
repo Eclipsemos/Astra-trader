@@ -13,6 +13,7 @@
 #include <sstream>
 #include <string>
 #include <string_view>
+#include <unordered_map>
 #include <vector>
 
 namespace {
@@ -28,6 +29,7 @@ struct Options {
     std::string output;
     std::string detail;
     std::string model{"baseline"};
+    std::string decision_tape;
     std::string laya_host{"127.0.0.1"};
     std::string laya_port{"8000"};
     std::uint64_t decision_every{1'000};
@@ -70,7 +72,8 @@ struct Metrics {
 
 void usage() {
     std::cerr << "usage: astra_replay --input FILE --output FILE "
-                 "[--detail FILE] [--model baseline|hold|laya] "
+                 "[--detail FILE] [--model baseline|hold|laya|tape] "
+                 "[--decision-tape FILE] "
                  "[--decision-every N] [--start-ns N] [--end-ns N] "
                  "[--feed-latency-ns N] [--probability-threshold-ppm N] "
                  "[--taker-fee-ppm N] [--market-slippage-ppm N] "
@@ -103,6 +106,7 @@ bool parse_options(int argc, char** argv, Options& options) {
         else if (option_value(index, argc, argv, "--output", value)) options.output = value;
         else if (option_value(index, argc, argv, "--detail", value)) options.detail = value;
         else if (option_value(index, argc, argv, "--model", value)) options.model = value;
+        else if (option_value(index, argc, argv, "--decision-tape", value)) options.decision_tape = value;
         else if (option_value(index, argc, argv, "--laya-host", value)) options.laya_host = value;
         else if (option_value(index, argc, argv, "--laya-port", value)) options.laya_port = value;
         else if (option_value(index, argc, argv, "--decision-every", value) &&
@@ -126,7 +130,9 @@ bool parse_options(int argc, char** argv, Options& options) {
         }
     }
     return !options.input.empty() && !options.output.empty() && options.decision_every > 0 &&
-           (options.model == "baseline" || options.model == "hold" || options.model == "laya") &&
+           (options.model == "baseline" || options.model == "hold" || options.model == "laya" ||
+            options.model == "tape") &&
+           (options.model != "tape" || !options.decision_tape.empty()) &&
            options.feed_latency_ns >= 0 && options.laya_timeout_ms > 0 &&
            options.taker_fee_ppm <= 1'000'000 && options.market_slippage_ppm <= 1'000'000;
 }
@@ -232,6 +238,78 @@ astra::ModelDecision hold_decision(std::uint64_t sequence) {
             .model = "hold",
             .error = {}};
 }
+
+class DecisionTape {
+public:
+    bool load(const std::string& path, std::string& error) {
+        std::ifstream input(path);
+        if (!input) {
+            error = "cannot open decision tape: " + path;
+            return false;
+        }
+        std::string line;
+        std::uint64_t row_number = 0;
+        while (std::getline(input, line)) {
+            ++row_number;
+            if (!line.empty() && line.back() == '\r') line.pop_back();
+            if (line.empty() || line == "sequence,action,long_probability_ppm,short_probability_ppm,hold_probability_ppm") {
+                continue;
+            }
+            std::vector<std::string_view> fields;
+            if (!split_csv(line, fields) || fields.size() != 5U) {
+                error = "invalid decision tape row " + std::to_string(row_number);
+                return false;
+            }
+            std::uint64_t sequence{};
+            std::uint32_t long_probability{};
+            std::uint32_t short_probability{};
+            std::uint32_t hold_probability{};
+            if (!parse_integer(fields[0], sequence) || !parse_integer(fields[2], long_probability) ||
+                !parse_integer(fields[3], short_probability) || !parse_integer(fields[4], hold_probability) ||
+                sequence == 0 || long_probability > 1'000'000 || short_probability > 1'000'000 ||
+                hold_probability > 1'000'000) {
+                error = "invalid decision tape values at row " + std::to_string(row_number);
+                return false;
+            }
+            astra::ModelAction action;
+            if (fields[1] == "long") action = astra::ModelAction::long_position;
+            else if (fields[1] == "short") action = astra::ModelAction::short_position;
+            else if (fields[1] == "hold") action = astra::ModelAction::hold;
+            else {
+                error = "invalid decision tape action at row " + std::to_string(row_number);
+                return false;
+            }
+            decisions_[sequence] = {.action = action,
+                                    .long_probability_ppm = long_probability,
+                                    .short_probability_ppm = short_probability,
+                                    .hold_probability_ppm = hold_probability,
+                                    .state_sequence = sequence,
+                                    .model = "decision-tape",
+                                    .error = {}};
+        }
+        if (decisions_.empty()) {
+            error = "decision tape is empty";
+            return false;
+        }
+        return true;
+    }
+
+    astra::ModelDecision decide(std::uint64_t sequence) const {
+        const auto found = decisions_.find(sequence);
+        if (found != decisions_.end()) return found->second;
+        auto decision = hold_decision(sequence);
+        decision.model = "decision-tape";
+        decision.error = "decision tape has no decision for sequence " + std::to_string(sequence);
+        return decision;
+    }
+
+    [[nodiscard]] bool contains(std::uint64_t sequence) const {
+        return decisions_.find(sequence) != decisions_.end();
+    }
+
+private:
+    std::unordered_map<std::uint64_t, astra::ModelDecision> decisions_;
+};
 
 void write_fill_detail(std::ofstream& detail, const astra::PaperFill& fill) {
     detail << "{\"event\":\"fill\",\"fill_id\":" << fill.fill_id
@@ -339,6 +417,16 @@ int main(int argc, char** argv) {
         }
     }
 
+    std::optional<DecisionTape> decision_tape;
+    if (options.model == "tape") {
+        decision_tape.emplace();
+        std::string tape_error;
+        if (!decision_tape->load(options.decision_tape, tape_error)) {
+            std::cerr << tape_error << '\n';
+            return 65;
+        }
+    }
+
     astra::PaperExchange exchange({
         .ledger = {.initial_cash_units = 10'000'000,
                    .account_scale = 2,
@@ -430,11 +518,14 @@ int main(int argc, char** argv) {
         }
         ++metrics.events;
         const auto state = features.update(event, exchange.ledger().state().position_units);
-        if (event.sequence % options.decision_every == 0) {
+        const bool tape_decision = options.model == "tape" && decision_tape.has_value() &&
+                                   decision_tape->contains(event.sequence);
+        if (event.sequence % options.decision_every == 0 || tape_decision) {
             astra::ModelDecision decision;
             if (options.model == "baseline") decision = baseline_decision(state);
             else if (options.model == "hold") decision = hold_decision(state.sequence);
-            else decision = laya->decide(state);
+            else if (options.model == "laya") decision = laya->decide(state);
+            else decision = decision_tape->decide(state.sequence);
             ++metrics.decisions;
             const auto proposed_action = astra::to_string(decision.action);
             const auto probability = decision.action == astra::ModelAction::long_position

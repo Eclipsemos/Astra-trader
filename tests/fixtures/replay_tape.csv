@@ -1,0 +1,6 @@
+sequence,action,long_probability_ppm,short_probability_ppm,hold_probability_ppm
+1,long,900000,50000,50000
+2,hold,100000,100000,800000
+3,short,50000,900000,50000
+4,hold,100000,100000,800000
+5,long,900000,50000,50000

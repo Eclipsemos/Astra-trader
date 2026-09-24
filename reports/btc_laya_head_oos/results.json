@@ -1,0 +1,519 @@
+{
+  "schema": "astra.report.btc-laya-head-oos.v1",
+  "generated_at": "2026-09-24T04:24:43.070972+00:00",
+  "input": {
+    "path": "btc-2025-2026.csv",
+    "sha256": "23a0fe0d93fdf448ab10312b776bdb5f5b8b62b7d87820d3d81ac618dd1f2e0e",
+    "rows": 875501
+  },
+  "protocol": {
+    "stride": 60,
+    "horizon": 60,
+    "epochs": 2,
+    "batch_size": 64,
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "encoder_frozen": true,
+    "trained_component": "model.scorer",
+    "train_samples_used": 4343,
+    "samples": {
+      "development_train": 4343,
+      "development_validation": 4416,
+      "holdout_2026": 5831
+    }
+  },
+  "calibration": {
+    "temperature": 1.25,
+    "threshold": 0.7,
+    "threshold_candidates": [
+      {
+        "return_ppm": 0,
+        "threshold": 0.4,
+        "fills": 0
+      },
+      {
+        "return_ppm": 0,
+        "threshold": 0.45,
+        "fills": 0
+      },
+      {
+        "return_ppm": 0,
+        "threshold": 0.5,
+        "fills": 0
+      },
+      {
+        "return_ppm": 0,
+        "threshold": 0.55,
+        "fills": 0
+      },
+      {
+        "return_ppm": 0,
+        "threshold": 0.6,
+        "fills": 0
+      },
+      {
+        "return_ppm": 0,
+        "threshold": 0.65,
+        "fills": 0
+      },
+      {
+        "return_ppm": 0,
+        "threshold": 0.7,
+        "fills": 0
+      }
+    ],
+    "base_temperature": 3.0
+  },
+  "generic_laya_frozen": {
+    "development_train": {
+      "prediction": {
+        "accuracy": 0.349758,
+        "label_counts": {
+          "short": 1368,
+          "long": 1456,
+          "hold": 1519
+        },
+        "action_counts": {
+          "hold": 4343
+        },
+        "log_loss": 1.176564,
+        "brier": 0.724364
+      },
+      "base": {
+        "samples": 4343,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      },
+      "stress": {
+        "samples": 4343,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      }
+    },
+    "development_validation": {
+      "prediction": {
+        "accuracy": 0.419837,
+        "label_counts": {
+          "long": 1293,
+          "short": 1269,
+          "hold": 1854
+        },
+        "action_counts": {
+          "hold": 4416
+        },
+        "log_loss": 1.113923,
+        "brier": 0.67891
+      },
+      "base": {
+        "samples": 4416,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      },
+      "stress": {
+        "samples": 4416,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      }
+    },
+    "holdout_2026": {
+      "prediction": {
+        "accuracy": 0.386555,
+        "label_counts": {
+          "long": 1777,
+          "hold": 2254,
+          "short": 1800
+        },
+        "action_counts": {
+          "hold": 5831
+        },
+        "log_loss": 1.14582,
+        "brier": 0.701859
+      },
+      "base": {
+        "samples": 5831,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      },
+      "stress": {
+        "samples": 5831,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      }
+    }
+  },
+  "btc_laya_head_adapted": {
+    "development_train": {
+      "prediction": {
+        "accuracy": 0.349758,
+        "label_counts": {
+          "short": 1368,
+          "long": 1456,
+          "hold": 1519
+        },
+        "action_counts": {
+          "hold": 4343
+        },
+        "log_loss": 1.106355,
+        "brier": 0.672233
+      },
+      "base": {
+        "samples": 4343,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      },
+      "stress": {
+        "samples": 4343,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      }
+    },
+    "development_validation": {
+      "prediction": {
+        "accuracy": 0.419837,
+        "label_counts": {
+          "long": 1293,
+          "short": 1269,
+          "hold": 1854
+        },
+        "action_counts": {
+          "hold": 4416
+        },
+        "log_loss": 1.081919,
+        "brier": 0.655127
+      },
+      "base": {
+        "samples": 4416,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      },
+      "stress": {
+        "samples": 4416,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      }
+    },
+    "holdout_2026": {
+      "prediction": {
+        "accuracy": 0.386555,
+        "label_counts": {
+          "long": 1777,
+          "hold": 2254,
+          "short": 1800
+        },
+        "action_counts": {
+          "hold": 5831
+        },
+        "log_loss": 1.092901,
+        "brier": 0.662747
+      },
+      "base": {
+        "samples": 5831,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      },
+      "stress": {
+        "samples": 5831,
+        "fills": 0,
+        "return_ppm": 0,
+        "final_equity_units": 10000000,
+        "max_drawdown_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": 0.0,
+        "position_units": 0
+      }
+    }
+  },
+  "artifact": {
+    "path": "btc_laya_head_oos/scorer.pt",
+    "sha256": "7359e74f97378e0da12fa1800f541b8ebd2d2e34f492b58355a6a2bf1480511c",
+    "bytes": 4213449
+  },
+  "decision_tapes": {
+    "development_train": {
+      "path": "btc_laya_head_oos/development_train-adapted-tape.csv",
+      "sha256": "3582d2c4dc04889ac0ba181d6b4fa6f1a01c5623f8c2f5d8eb610dd9f6024912",
+      "bytes": 145894
+    },
+    "development_validation": {
+      "path": "btc_laya_head_oos/development_validation-adapted-tape.csv",
+      "sha256": "ba812c5f4a772fad9870bc7f1c1621d7aaf367f5a0042c8f5bd4b87106214e8a",
+      "bytes": 150225
+    },
+    "holdout_2026": {
+      "path": "btc_laya_head_oos/holdout_2026-adapted-tape.csv",
+      "sha256": "3f8bc85eab19f62f27be2393e291d416ac87bb3a4c0a1f0ae6e05ea067e28553",
+      "bytes": 198335
+    }
+  },
+  "decision": {
+    "paper_approved": false,
+    "reason": "Head-only adaptation is an experiment; 2026 OOS must clear the existing paper gates before promotion."
+  },
+  "cpp_tape_evaluation": {
+    "development_train": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1735689600000000000,
+        "end_ns": 1751327999000000000,
+        "events": 260640,
+        "decisions": 8687,
+        "signals": 0,
+        "accepted_orders": 0,
+        "rejected_orders": 0,
+        "fills": 0,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10000000,
+        "pnl_units": 0,
+        "return_ppm": 0,
+        "max_drawdown_units": 0,
+        "realized_pnl_units": 0,
+        "unrealized_pnl_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": "0.000",
+        "position_units": 0
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1735689600000000000,
+        "end_ns": 1751327999000000000,
+        "events": 260640,
+        "decisions": 8687,
+        "signals": 0,
+        "accepted_orders": 0,
+        "rejected_orders": 0,
+        "fills": 0,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10000000,
+        "pnl_units": 0,
+        "return_ppm": 0,
+        "max_drawdown_units": 0,
+        "realized_pnl_units": 0,
+        "unrealized_pnl_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": "0.000",
+        "position_units": 0
+      }
+    },
+    "development_validation": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1751328000000000000,
+        "end_ns": 1767225599000000000,
+        "events": 264941,
+        "decisions": 8831,
+        "signals": 0,
+        "accepted_orders": 0,
+        "rejected_orders": 0,
+        "fills": 0,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10000000,
+        "pnl_units": 0,
+        "return_ppm": 0,
+        "max_drawdown_units": 0,
+        "realized_pnl_units": 0,
+        "unrealized_pnl_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": "0.000",
+        "position_units": 0
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1751328000000000000,
+        "end_ns": 1767225599000000000,
+        "events": 264941,
+        "decisions": 8831,
+        "signals": 0,
+        "accepted_orders": 0,
+        "rejected_orders": 0,
+        "fills": 0,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10000000,
+        "pnl_units": 0,
+        "return_ppm": 0,
+        "max_drawdown_units": 0,
+        "realized_pnl_units": 0,
+        "unrealized_pnl_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": "0.000",
+        "position_units": 0
+      }
+    },
+    "holdout_2026": {
+      "base": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 500,
+        "market_slippage_ppm": 100,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1788220799000000000,
+        "events": 349920,
+        "decisions": 11663,
+        "signals": 0,
+        "accepted_orders": 0,
+        "rejected_orders": 0,
+        "fills": 0,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10000000,
+        "pnl_units": 0,
+        "return_ppm": 0,
+        "max_drawdown_units": 0,
+        "realized_pnl_units": 0,
+        "unrealized_pnl_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": "0.000",
+        "position_units": 0
+      },
+      "stress": {
+        "schema": "astra.replay.metrics.v1",
+        "model": "tape",
+        "input": "data/replay/btc-2025-2026.csv",
+        "decision_every": 60,
+        "taker_fee_ppm": 1000,
+        "market_slippage_ppm": 500,
+        "start_ns": 1767225600000000000,
+        "end_ns": 1788220799000000000,
+        "events": 349920,
+        "decisions": 11663,
+        "signals": 0,
+        "accepted_orders": 0,
+        "rejected_orders": 0,
+        "fills": 0,
+        "ignored_events": 0,
+        "initial_equity_units": 10000000,
+        "final_equity_units": 10000000,
+        "pnl_units": 0,
+        "return_ppm": 0,
+        "max_drawdown_units": 0,
+        "realized_pnl_units": 0,
+        "unrealized_pnl_units": 0,
+        "fees_units": 0,
+        "gross_profit_units": 0,
+        "gross_loss_units": 0,
+        "profit_factor": "0.000",
+        "position_units": 0
+      }
+    }
+  },
+  "execution_evidence": {
+    "engine": "build/dev/astra_replay",
+    "model": "tape",
+    "decision_threshold_ppm": 700000,
+    "note": "Final execution/PnL evidence comes from C++ PaperExchange; Python metrics are research pre-checks only."
+  }
+}

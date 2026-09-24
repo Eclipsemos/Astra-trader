@@ -1,0 +1,811 @@
+{
+  "schema": "astra.report.btc-tick-data-audit.v1",
+  "generated_at": "2026-09-24T03:11:25.492219+00:00",
+  "directory": "/home/ldtdev/qt/mmtick/data/history_btc_tick",
+  "archive_count": 72,
+  "monthly_count": 32,
+  "daily_count": 40,
+  "compressed_bytes": 18893213320,
+  "uncompressed_bytes": 100877822771,
+  "deduplicated_selection": {
+    "archive_count": 46,
+    "compressed_bytes": 18528924312,
+    "uncompressed_bytes": 98896519848,
+    "periods": [
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09-01",
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04",
+      "2026-09-05",
+      "2026-09-06",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14"
+    ],
+    "excluded_overlap_days": [
+      "2026-08-01",
+      "2026-08-02",
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07",
+      "2026-08-08",
+      "2026-08-09",
+      "2026-08-10",
+      "2026-08-11",
+      "2026-08-12",
+      "2026-08-13",
+      "2026-08-14",
+      "2026-08-15",
+      "2026-08-16",
+      "2026-08-17",
+      "2026-08-18",
+      "2026-08-19",
+      "2026-08-20",
+      "2026-08-21",
+      "2026-08-22",
+      "2026-08-23",
+      "2026-08-24",
+      "2026-08-25",
+      "2026-08-26"
+    ]
+  },
+  "first_period": "2024-01",
+  "last_period": "2026-09-14",
+  "archives": [
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-01.zip",
+      "name": "BTCUSDT-aggTrades-2024-01.zip",
+      "period": "2024-01",
+      "kind": "monthly",
+      "compressed_bytes": 522743749,
+      "uncompressed_bytes": 2673136339,
+      "member": "BTCUSDT-aggTrades-2024-01.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-02.zip",
+      "name": "BTCUSDT-aggTrades-2024-02.zip",
+      "period": "2024-02",
+      "kind": "monthly",
+      "compressed_bytes": 472350747,
+      "uncompressed_bytes": 2410137989,
+      "member": "BTCUSDT-aggTrades-2024-02.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-03.zip",
+      "name": "BTCUSDT-aggTrades-2024-03.zip",
+      "period": "2024-03",
+      "kind": "monthly",
+      "compressed_bytes": 847406944,
+      "uncompressed_bytes": 4414566095,
+      "member": "BTCUSDT-aggTrades-2024-03.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-04.zip",
+      "name": "BTCUSDT-aggTrades-2024-04.zip",
+      "period": "2024-04",
+      "kind": "monthly",
+      "compressed_bytes": 673475890,
+      "uncompressed_bytes": 3485477928,
+      "member": "BTCUSDT-aggTrades-2024-04.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-05.zip",
+      "name": "BTCUSDT-aggTrades-2024-05.zip",
+      "period": "2024-05",
+      "kind": "monthly",
+      "compressed_bytes": 502066717,
+      "uncompressed_bytes": 2585417391,
+      "member": "BTCUSDT-aggTrades-2024-05.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-06.zip",
+      "name": "BTCUSDT-aggTrades-2024-06.zip",
+      "period": "2024-06",
+      "kind": "monthly",
+      "compressed_bytes": 340036587,
+      "uncompressed_bytes": 1734000671,
+      "member": "BTCUSDT-aggTrades-2024-06.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-07.zip",
+      "name": "BTCUSDT-aggTrades-2024-07.zip",
+      "period": "2024-07",
+      "kind": "monthly",
+      "compressed_bytes": 488332735,
+      "uncompressed_bytes": 2491964674,
+      "member": "BTCUSDT-aggTrades-2024-07.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-08.zip",
+      "name": "BTCUSDT-aggTrades-2024-08.zip",
+      "period": "2024-08",
+      "kind": "monthly",
+      "compressed_bytes": 621175912,
+      "uncompressed_bytes": 3176611668,
+      "member": "BTCUSDT-aggTrades-2024-08.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-09.zip",
+      "name": "BTCUSDT-aggTrades-2024-09.zip",
+      "period": "2024-09",
+      "kind": "monthly",
+      "compressed_bytes": 457356098,
+      "uncompressed_bytes": 2346004858,
+      "member": "BTCUSDT-aggTrades-2024-09.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-10.zip",
+      "name": "BTCUSDT-aggTrades-2024-10.zip",
+      "period": "2024-10",
+      "kind": "monthly",
+      "compressed_bytes": 480827973,
+      "uncompressed_bytes": 2498375326,
+      "member": "BTCUSDT-aggTrades-2024-10.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-11.zip",
+      "name": "BTCUSDT-aggTrades-2024-11.zip",
+      "period": "2024-11",
+      "kind": "monthly",
+      "compressed_bytes": 729944402,
+      "uncompressed_bytes": 3821737758,
+      "member": "BTCUSDT-aggTrades-2024-11.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2024-12.zip",
+      "name": "BTCUSDT-aggTrades-2024-12.zip",
+      "period": "2024-12",
+      "kind": "monthly",
+      "compressed_bytes": 683913057,
+      "uncompressed_bytes": 3626427127,
+      "member": "BTCUSDT-aggTrades-2024-12.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-01.zip",
+      "name": "BTCUSDT-aggTrades-2025-01.zip",
+      "period": "2025-01",
+      "kind": "monthly",
+      "compressed_bytes": 692363439,
+      "uncompressed_bytes": 3712520469,
+      "member": "BTCUSDT-aggTrades-2025-01.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-02.zip",
+      "name": "BTCUSDT-aggTrades-2025-02.zip",
+      "period": "2025-02",
+      "kind": "monthly",
+      "compressed_bytes": 567527394,
+      "uncompressed_bytes": 3015185110,
+      "member": "BTCUSDT-aggTrades-2025-02.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-03.zip",
+      "name": "BTCUSDT-aggTrades-2025-03.zip",
+      "period": "2025-03",
+      "kind": "monthly",
+      "compressed_bytes": 708582622,
+      "uncompressed_bytes": 3779599255,
+      "member": "BTCUSDT-aggTrades-2025-03.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-04.zip",
+      "name": "BTCUSDT-aggTrades-2025-04.zip",
+      "period": "2025-04",
+      "kind": "monthly",
+      "compressed_bytes": 596176579,
+      "uncompressed_bytes": 3161483916,
+      "member": "BTCUSDT-aggTrades-2025-04.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-05.zip",
+      "name": "BTCUSDT-aggTrades-2025-05.zip",
+      "period": "2025-05",
+      "kind": "monthly",
+      "compressed_bytes": 504086793,
+      "uncompressed_bytes": 2726767242,
+      "member": "BTCUSDT-aggTrades-2025-05.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-06.zip",
+      "name": "BTCUSDT-aggTrades-2025-06.zip",
+      "period": "2025-06",
+      "kind": "monthly",
+      "compressed_bytes": 407768914,
+      "uncompressed_bytes": 2196539671,
+      "member": "BTCUSDT-aggTrades-2025-06.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-07.zip",
+      "name": "BTCUSDT-aggTrades-2025-07.zip",
+      "period": "2025-07",
+      "kind": "monthly",
+      "compressed_bytes": 393122038,
+      "uncompressed_bytes": 2113190124,
+      "member": "BTCUSDT-aggTrades-2025-07.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-08.zip",
+      "name": "BTCUSDT-aggTrades-2025-08.zip",
+      "period": "2025-08",
+      "kind": "monthly",
+      "compressed_bytes": 430144584,
+      "uncompressed_bytes": 2341330146,
+      "member": "BTCUSDT-aggTrades-2025-08.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-09.zip",
+      "name": "BTCUSDT-aggTrades-2025-09.zip",
+      "period": "2025-09",
+      "kind": "monthly",
+      "compressed_bytes": 338553600,
+      "uncompressed_bytes": 1836099715,
+      "member": "BTCUSDT-aggTrades-2025-09.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-10.zip",
+      "name": "BTCUSDT-aggTrades-2025-10.zip",
+      "period": "2025-10",
+      "kind": "monthly",
+      "compressed_bytes": 678684486,
+      "uncompressed_bytes": 3757694426,
+      "member": "BTCUSDT-aggTrades-2025-10.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-11.zip",
+      "name": "BTCUSDT-aggTrades-2025-11.zip",
+      "period": "2025-11",
+      "kind": "monthly",
+      "compressed_bytes": 776936266,
+      "uncompressed_bytes": 4266130907,
+      "member": "BTCUSDT-aggTrades-2025-11.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2025-12.zip",
+      "name": "BTCUSDT-aggTrades-2025-12.zip",
+      "period": "2025-12",
+      "kind": "monthly",
+      "compressed_bytes": 609312983,
+      "uncompressed_bytes": 3321092329,
+      "member": "BTCUSDT-aggTrades-2025-12.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-01.zip",
+      "name": "BTCUSDT-aggTrades-2026-01.zip",
+      "period": "2026-01",
+      "kind": "monthly",
+      "compressed_bytes": 542757450,
+      "uncompressed_bytes": 2969828119,
+      "member": "BTCUSDT-aggTrades-2026-01.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-02.zip",
+      "name": "BTCUSDT-aggTrades-2026-02.zip",
+      "period": "2026-02",
+      "kind": "monthly",
+      "compressed_bytes": 1006713302,
+      "uncompressed_bytes": 5591936940,
+      "member": "BTCUSDT-aggTrades-2026-02.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-03.zip",
+      "name": "BTCUSDT-aggTrades-2026-03.zip",
+      "period": "2026-03",
+      "kind": "monthly",
+      "compressed_bytes": 799224859,
+      "uncompressed_bytes": 4363963205,
+      "member": "BTCUSDT-aggTrades-2026-03.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-04.zip",
+      "name": "BTCUSDT-aggTrades-2026-04.zip",
+      "period": "2026-04",
+      "kind": "monthly",
+      "compressed_bytes": 508207480,
+      "uncompressed_bytes": 2760138263,
+      "member": "BTCUSDT-aggTrades-2026-04.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-05.zip",
+      "name": "BTCUSDT-aggTrades-2026-05.zip",
+      "period": "2026-05",
+      "kind": "monthly",
+      "compressed_bytes": 413059686,
+      "uncompressed_bytes": 2236265084,
+      "member": "BTCUSDT-aggTrades-2026-05.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-06.zip",
+      "name": "BTCUSDT-aggTrades-2026-06.zip",
+      "period": "2026-06",
+      "kind": "monthly",
+      "compressed_bytes": 700931799,
+      "uncompressed_bytes": 3863721415,
+      "member": "BTCUSDT-aggTrades-2026-06.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-07.zip",
+      "name": "BTCUSDT-aggTrades-2026-07.zip",
+      "period": "2026-07",
+      "kind": "monthly",
+      "compressed_bytes": 418358663,
+      "uncompressed_bytes": 2262690176,
+      "member": "BTCUSDT-aggTrades-2026-07.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-01.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-01.zip",
+      "period": "2026-08-01",
+      "kind": "daily",
+      "compressed_bytes": 5049749,
+      "uncompressed_bytes": 26515205,
+      "member": "BTCUSDT-aggTrades-2026-08-01.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-02.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-02.zip",
+      "period": "2026-08-02",
+      "kind": "daily",
+      "compressed_bytes": 7050228,
+      "uncompressed_bytes": 37155272,
+      "member": "BTCUSDT-aggTrades-2026-08-02.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-03.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-03.zip",
+      "period": "2026-08-03",
+      "kind": "daily",
+      "compressed_bytes": 12769235,
+      "uncompressed_bytes": 68282988,
+      "member": "BTCUSDT-aggTrades-2026-08-03.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-04.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-04.zip",
+      "period": "2026-08-04",
+      "kind": "daily",
+      "compressed_bytes": 11492588,
+      "uncompressed_bytes": 61639040,
+      "member": "BTCUSDT-aggTrades-2026-08-04.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-05.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-05.zip",
+      "period": "2026-08-05",
+      "kind": "daily",
+      "compressed_bytes": 11064517,
+      "uncompressed_bytes": 59016429,
+      "member": "BTCUSDT-aggTrades-2026-08-05.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-06.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-06.zip",
+      "period": "2026-08-06",
+      "kind": "daily",
+      "compressed_bytes": 8605435,
+      "uncompressed_bytes": 45691718,
+      "member": "BTCUSDT-aggTrades-2026-08-06.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-07.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-07.zip",
+      "period": "2026-08-07",
+      "kind": "daily",
+      "compressed_bytes": 10162297,
+      "uncompressed_bytes": 54304779,
+      "member": "BTCUSDT-aggTrades-2026-08-07.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-08.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-08.zip",
+      "period": "2026-08-08",
+      "kind": "daily",
+      "compressed_bytes": 2788041,
+      "uncompressed_bytes": 14234069,
+      "member": "BTCUSDT-aggTrades-2026-08-08.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-09.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-09.zip",
+      "period": "2026-08-09",
+      "kind": "daily",
+      "compressed_bytes": 4166193,
+      "uncompressed_bytes": 21492542,
+      "member": "BTCUSDT-aggTrades-2026-08-09.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-10.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-10.zip",
+      "period": "2026-08-10",
+      "kind": "daily",
+      "compressed_bytes": 9620002,
+      "uncompressed_bytes": 50740514,
+      "member": "BTCUSDT-aggTrades-2026-08-10.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-11.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-11.zip",
+      "period": "2026-08-11",
+      "kind": "daily",
+      "compressed_bytes": 7927823,
+      "uncompressed_bytes": 41460856,
+      "member": "BTCUSDT-aggTrades-2026-08-11.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-12.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-12.zip",
+      "period": "2026-08-12",
+      "kind": "daily",
+      "compressed_bytes": 9058924,
+      "uncompressed_bytes": 47821750,
+      "member": "BTCUSDT-aggTrades-2026-08-12.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-13.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-13.zip",
+      "period": "2026-08-13",
+      "kind": "daily",
+      "compressed_bytes": 8913675,
+      "uncompressed_bytes": 47026130,
+      "member": "BTCUSDT-aggTrades-2026-08-13.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-14.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-14.zip",
+      "period": "2026-08-14",
+      "kind": "daily",
+      "compressed_bytes": 8098981,
+      "uncompressed_bytes": 42712967,
+      "member": "BTCUSDT-aggTrades-2026-08-14.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-15.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-15.zip",
+      "period": "2026-08-15",
+      "kind": "daily",
+      "compressed_bytes": 2651385,
+      "uncompressed_bytes": 13562432,
+      "member": "BTCUSDT-aggTrades-2026-08-15.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-16.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-16.zip",
+      "period": "2026-08-16",
+      "kind": "daily",
+      "compressed_bytes": 3615614,
+      "uncompressed_bytes": 18627237,
+      "member": "BTCUSDT-aggTrades-2026-08-16.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-17.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-17.zip",
+      "period": "2026-08-17",
+      "kind": "daily",
+      "compressed_bytes": 9163295,
+      "uncompressed_bytes": 48015630,
+      "member": "BTCUSDT-aggTrades-2026-08-17.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-18.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-18.zip",
+      "period": "2026-08-18",
+      "kind": "daily",
+      "compressed_bytes": 6930298,
+      "uncompressed_bytes": 36214297,
+      "member": "BTCUSDT-aggTrades-2026-08-18.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-19.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-19.zip",
+      "period": "2026-08-19",
+      "kind": "daily",
+      "compressed_bytes": 25046746,
+      "uncompressed_bytes": 136965293,
+      "member": "BTCUSDT-aggTrades-2026-08-19.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-20.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-20.zip",
+      "period": "2026-08-20",
+      "kind": "daily",
+      "compressed_bytes": 33119895,
+      "uncompressed_bytes": 183140611,
+      "member": "BTCUSDT-aggTrades-2026-08-20.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-21.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-21.zip",
+      "period": "2026-08-21",
+      "kind": "daily",
+      "compressed_bytes": 56733188,
+      "uncompressed_bytes": 319099139,
+      "member": "BTCUSDT-aggTrades-2026-08-21.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-22.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-22.zip",
+      "period": "2026-08-22",
+      "kind": "daily",
+      "compressed_bytes": 19485408,
+      "uncompressed_bytes": 107692298,
+      "member": "BTCUSDT-aggTrades-2026-08-22.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-23.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-23.zip",
+      "period": "2026-08-23",
+      "kind": "daily",
+      "compressed_bytes": 15917708,
+      "uncompressed_bytes": 87343311,
+      "member": "BTCUSDT-aggTrades-2026-08-23.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-24.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-24.zip",
+      "period": "2026-08-24",
+      "kind": "daily",
+      "compressed_bytes": 29399147,
+      "uncompressed_bytes": 162331882,
+      "member": "BTCUSDT-aggTrades-2026-08-24.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-25.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-25.zip",
+      "period": "2026-08-25",
+      "kind": "daily",
+      "compressed_bytes": 28098410,
+      "uncompressed_bytes": 154595817,
+      "member": "BTCUSDT-aggTrades-2026-08-25.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08-26.zip",
+      "name": "BTCUSDT-aggTrades-2026-08-26.zip",
+      "period": "2026-08-26",
+      "kind": "daily",
+      "compressed_bytes": 17360226,
+      "uncompressed_bytes": 95620717,
+      "member": "BTCUSDT-aggTrades-2026-08-26.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-08.zip",
+      "name": "BTCUSDT-aggTrades-2026-08.zip",
+      "period": "2026-08",
+      "kind": "monthly",
+      "compressed_bytes": 435674588,
+      "uncompressed_bytes": 2370241796,
+      "member": "BTCUSDT-aggTrades-2026-08.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-01.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-01.zip",
+      "period": "2026-09-01",
+      "kind": "daily",
+      "compressed_bytes": 16134016,
+      "uncompressed_bytes": 88013591,
+      "member": "BTCUSDT-aggTrades-2026-09-01.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-02.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-02.zip",
+      "period": "2026-09-02",
+      "kind": "daily",
+      "compressed_bytes": 15026149,
+      "uncompressed_bytes": 82177781,
+      "member": "BTCUSDT-aggTrades-2026-09-02.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-03.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-03.zip",
+      "period": "2026-09-03",
+      "kind": "daily",
+      "compressed_bytes": 21991621,
+      "uncompressed_bytes": 120057913,
+      "member": "BTCUSDT-aggTrades-2026-09-03.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-04.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-04.zip",
+      "period": "2026-09-04",
+      "kind": "daily",
+      "compressed_bytes": 17905938,
+      "uncompressed_bytes": 97716701,
+      "member": "BTCUSDT-aggTrades-2026-09-04.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-05.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-05.zip",
+      "period": "2026-09-05",
+      "kind": "daily",
+      "compressed_bytes": 5133394,
+      "uncompressed_bytes": 27276285,
+      "member": "BTCUSDT-aggTrades-2026-09-05.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-06.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-06.zip",
+      "period": "2026-09-06",
+      "kind": "daily",
+      "compressed_bytes": 6576354,
+      "uncompressed_bytes": 35041004,
+      "member": "BTCUSDT-aggTrades-2026-09-06.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-07.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-07.zip",
+      "period": "2026-09-07",
+      "kind": "daily",
+      "compressed_bytes": 9162550,
+      "uncompressed_bytes": 49130167,
+      "member": "BTCUSDT-aggTrades-2026-09-07.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-08.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-08.zip",
+      "period": "2026-09-08",
+      "kind": "daily",
+      "compressed_bytes": 12614367,
+      "uncompressed_bytes": 68329872,
+      "member": "BTCUSDT-aggTrades-2026-09-08.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-09.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-09.zip",
+      "period": "2026-09-09",
+      "kind": "daily",
+      "compressed_bytes": 15001551,
+      "uncompressed_bytes": 82106516,
+      "member": "BTCUSDT-aggTrades-2026-09-09.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-10.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-10.zip",
+      "period": "2026-09-10",
+      "kind": "daily",
+      "compressed_bytes": 14263854,
+      "uncompressed_bytes": 78064883,
+      "member": "BTCUSDT-aggTrades-2026-09-10.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-11.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-11.zip",
+      "period": "2026-09-11",
+      "kind": "daily",
+      "compressed_bytes": 20699493,
+      "uncompressed_bytes": 114460384,
+      "member": "BTCUSDT-aggTrades-2026-09-11.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-12.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-12.zip",
+      "period": "2026-09-12",
+      "kind": "daily",
+      "compressed_bytes": 3736187,
+      "uncompressed_bytes": 19674640,
+      "member": "BTCUSDT-aggTrades-2026-09-12.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-13.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-13.zip",
+      "period": "2026-09-13",
+      "kind": "daily",
+      "compressed_bytes": 6390912,
+      "uncompressed_bytes": 34058194,
+      "member": "BTCUSDT-aggTrades-2026-09-13.csv"
+    },
+    {
+      "path": "/home/ldtdev/qt/mmtick/data/history_btc_tick/BTCUSDT-aggTrades-2026-09-14.zip",
+      "name": "BTCUSDT-aggTrades-2026-09-14.zip",
+      "period": "2026-09-14",
+      "kind": "daily",
+      "compressed_bytes": 16469590,
+      "uncompressed_bytes": 90135785,
+      "member": "BTCUSDT-aggTrades-2026-09-14.csv"
+    }
+  ],
+  "sqlite": {
+    "path": "/home/ldtdev/qt/mmtick/data/btc_tick.db",
+    "bytes": 74850693120,
+    "page_count": 18274095,
+    "page_size": 4096,
+    "allocated_bytes": 74850693120,
+    "freelist_pages": 0,
+    "journal_mode": "wal",
+    "tables": [
+      "accounts",
+      "orders",
+      "fills",
+      "equity_snapshots",
+      "sqlite_sequence",
+      "events",
+      "strategy_states",
+      "funding_payments",
+      "funding_rates",
+      "agg_trades",
+      "reconstructed_signals",
+      "ohlcv_bars"
+    ],
+    "agg_trades_columns": [
+      "event_id",
+      "instrument_id",
+      "symbol",
+      "aggregate_trade_id",
+      "first_trade_id",
+      "last_trade_id",
+      "event_time_ms",
+      "timestamp_ms",
+      "price",
+      "open_price",
+      "high_price",
+      "low_price",
+      "quantity",
+      "notional",
+      "buyer_is_maker",
+      "source",
+      "received_at_ms"
+    ],
+    "agg_trades_row_count": null,
+    "row_count_note": "Exact COUNT(*) intentionally omitted; it requires a long scan of the 70 GiB table.",
+    "btc_perp_first": {
+      "instrument_id": "btc_perp",
+      "symbol": "BTCUSDT",
+      "timestamp_ms": 1704067200038,
+      "timestamp": "2024-01-01T00:00:00.038000+00:00",
+      "price": "42313.9",
+      "quantity": "0.046",
+      "source": "binance_futures_archive"
+    },
+    "btc_perp_last": {
+      "instrument_id": "btc_perp",
+      "symbol": "BTCUSDT",
+      "timestamp_ms": 1787886885397,
+      "timestamp": "2026-08-28T03:14:45.397000+00:00",
+      "price": "79849.60",
+      "quantity": "0.002",
+      "source": "binance_futures_aggtrade_rest"
+    }
+  },
+  "decision": {
+    "raw_aggregate_trades_available": true,
+    "latest_canonical_source": "ZIP archives",
+    "sqlite_is_latest_complete_source": false,
+    "ready_for_tick_feature_build": true
+  }
+}

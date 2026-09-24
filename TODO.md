@@ -168,11 +168,15 @@ Exit criteria:
 ## Phase 3: Historical Data and Replay
 
 - [x] Inventory `mmtick` BTC data by venue, market type, date, schema, cadence, and completeness.
+- [x] Confirm the full Binance USD-M aggregate-trade source (92.1 GiB uncompressed after monthly/daily
+      de-duplication through 2026-09-14); see `reports/btc_tick_data_audit/`.
 - [x] Import aggregate trades without duplicating the large source datasets.
 - [ ] Import historical book-depth curves and clearly distinguish them from full L2 data.
 - [ ] Import the available approximately 13-hour full-depth capture for microstructure validation.
 - [x] Build the causal aggregate replay engine in C++ and run it through the same core state
       machine used by live market data.
+- [x] Add a C++ decision-tape replay path so Python/Laya training output is evaluated by the
+      production fixed-point paper ledger; see `reports/btc_laya_head_oos/`.
 - [ ] Add configurable inference, network, order acknowledgement, cancel, and fill latency.
 - [x] Prevent future data leakage in rolling features, labels, queue state, and fills.
 - [ ] Reproduce selected prior `mmtick` HFT results as a regression check.
